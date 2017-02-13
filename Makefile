@@ -1,5 +1,6 @@
 install: 
 	npm install
+	make server
 
 server:
 	npm run dev
