@@ -4,22 +4,24 @@
   "description": "Nom nom burgers",
   "main": "index.js",
   "dependencies": {
-    "light-server": "^1.1.10"
+	"angular": "^1.3.0",
+	"angular-animate": "^1.3.0",
+	"angular-material": "^1.1.3"
   },
   "devDependencies": {
-    "lite-server": "^2.2.2"
+	"lite-server": "^2.2.2"
   },
   "scripts": {
 	"dev": "lite-server"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Melkster/burgers.git"
+	"type": "git",
+	"url": "git+https://github.com/Melkster/burgers.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Melkster/burgers/issues"
+	"url": "https://github.com/Melkster/burgers/issues"
   },
   "homepage": "https://github.com/Melkster/burgers#readme"
 }
