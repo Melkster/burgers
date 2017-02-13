@@ -1,0 +1,23 @@
+{
+  "name": "burgers",
+  "version": "1.0.0",
+  "description": "Nom nom burgers",
+  "main": "index.js",
+  "dependencies": {
+    "light-server": "^1.1.10"
+  },
+  "devDependencies": {
+    "lite-server": "^2.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Melkster/burgers.git"
+  },
+  "author": "Melker Österberg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Melkster/burgers/issues"
+  },
+  "homepage": "https://github.com/Melkster/burgers#readme",
+  "dev": "lite-server"
+}

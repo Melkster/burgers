@@ -35,4 +35,7 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Other
 *.swp
+node_modules/
