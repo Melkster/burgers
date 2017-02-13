@@ -9,15 +9,17 @@
   "devDependencies": {
     "lite-server": "^2.2.2"
   },
+  "scripts": {
+	"dev": "lite-server"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Melkster/burgers.git"
   },
-  "author": "Melker Österberg",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Melkster/burgers/issues"
   },
-  "homepage": "https://github.com/Melkster/burgers#readme",
-  "dev": "lite-server"
+  "homepage": "https://github.com/Melkster/burgers#readme"
 }
