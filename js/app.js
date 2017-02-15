@@ -1,5 +1,6 @@
-var app = angular.module('app', ['ngRoute']);
+var app = angular.module('app', []);
 
 app.controller('ctrl', function($scope) {
-	$scope.hej = 'hej';
-})
+  $scope.hej = 'Hej';
+  $scope.title = 'I like trains.'
+});
