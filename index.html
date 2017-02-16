@@ -1,29 +1,30 @@
 <!doctype html>
 <html>
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <style>
-        .jumbotron { font-size: 4rem; text-align: center; }
-    </style>
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <style>
+.jumbotron { font-size: 4rem; text-align: center; }
+  </style>
 
-	<!--AngularJS-->
-	<script src="./node_modules/angular/angular.min.js"></script>
-	<script src="./node_modules/angular-animate/angular-animate.js"></script>
-	<script src="./node_modules/angular-aria/angular-aria.js"></script>
-	<script src="./node_modules/angular-material/angular-material.js"></script>
+  <!--AngularJS-->
+  <script src="./node_modules/angular/angular.min.js"></script>
+  <script src="./node_modules/angular-animate/angular-animate.js"></script>
+  <script src="./node_modules/angular-aria/angular-aria.js"></script>
+  <script src="./node_modules/angular-material/angular-material.js"></script>
 </head>
 <!-------------------------------------------BODY------------------------------------------>
 <body ng-app="app" ng-controller="ctrl">
 
-    <div class="jumbotron">
-	  {{ title }}
-    </div>
+  <div class="jumbotron">
+	{{ title }}
+  </div>
 
-	<div>
-		 <p>Enter your name: <input type = "text" ng-model = "name"></p>
-		 <p ng-controller="ctrl">{{ hej }} <span ng-bind = "name"></span></p>
-	</div>
+  <div>
+	<p>Enter your name: <input type = "text" ng-model = "name"></p>
+	<p ng-controller="ctrl">{{ hej }} <span ng-bind = "name"></span></p>
+  </div>
 
-	<script src="./js/app.js"></script>
+  <script src="./js/app.js"></script>
 </body>
 </html>
