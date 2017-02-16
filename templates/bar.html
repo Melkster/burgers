@@ -12,7 +12,13 @@
 </header>
 <main>
 	<h3>Choose meal:</h3>
-	<ul>
-	  <li ng-repeat="name in getBurgerNames(burgers)">{{name}}</li>
-	</ul>
+	<section class="burgers">
+	  <ul>
+		<li ng-repeat="burger in burgers">
+		  {{burger.name}}
+		  <img src={{burger.image}} width="30%" height="30%">
+		</li>
+	  </ul>
+	</section>
+	<burger></burger>
 </main>

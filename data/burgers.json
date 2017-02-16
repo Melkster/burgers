@@ -4,7 +4,7 @@ var burgers = [
         "calories": 800,
         "gluten": true,
         "lactose": true,
-        "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cheeseburger.jpg/300px-Cheeseburger.jpg",
+        "image": "images/burgers/burger1.jpg",
         "ingredients": [
             "bread",
             "beef",
@@ -21,7 +21,7 @@ var burgers = [
         "calories": 600,
         "gluten": false,
         "lactose": false,
-        "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cheeseburger.jpg/300px-Cheeseburger.jpg",
+        "image": "images/burgers/burger1.jpg",
         "ingredients": [
             "bread (gluten-free)",
             "quorn",
@@ -38,7 +38,7 @@ var burgers = [
         "calories": 700,
         "gluten": true,
         "lactose": true,
-        "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cheeseburger.jpg/300px-Cheeseburger.jpg",
+        "image": "images/burgers/burger1.jpg",
         "ingredients": [
             "bread",
             "beef",
@@ -57,7 +57,7 @@ var burgers = [
         "calories": 675,
         "gluten": true,
         "lactose": true,
-        "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cheeseburger.jpg/300px-Cheeseburger.jpg",
+        "image": "images/burgers/burger1.jpg",
         "ingredients": [
             "bread",
             "beef",

@@ -2,3 +2,17 @@ header {
   background-color: #ccc;
   padding: 10px;
 }
+
+section.burgers {
+  border: solid gray 2px;
+  padding: 10px;
+}
+
+section.burgers li {
+	border: gray solid 2px;
+	padding: 10px;
+	list-style: none;
+	margin-right: 5px;
+	/*float: left;*/
+	display: inline-block;
+}
