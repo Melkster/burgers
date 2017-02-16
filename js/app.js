@@ -7,14 +7,19 @@ app.component('bar', {
 	  $scope.order = [];
 	  $scope.addItem = function(item) {
 		var itemInList = $scope.itemExists($scope.order, item);
-		if (itemInList === null) $scope.order.push({ 'name': item, 'amount': 1 });
+		var newItem = {
+		  'item': item,
+		  'amount': 1
+		}
+
+		if (itemInList === null) $scope.order.push(newItem);
 		else {
 		  itemInList.amount++;
 		}
 	  };
 
 	  $scope.itemExists = function(list, item) {
-		for (i in list) if (list[i].item == item) return list[i];
+		for (i in list) if (angular.equals(list[i].item.name, item.name)) return list[i];
 		return null;
 	  };
 	}

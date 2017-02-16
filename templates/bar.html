@@ -5,7 +5,7 @@
 	<section class="burgers">
 	<h3>Choose meal:</h3>
 	  <ul>
-		<li ng-repeat="burger in burgers"  ng-click="addItem(burger.name)">
+		<li ng-repeat="burger in burgers"  ng-click="addItem({ 'name': burger.name, 'customs': []})">
 		  <h4>{{burger.name}}</h4>
 		  <img src={{burger.image}} width="30%" height="30%">
 		</li>
@@ -15,7 +15,7 @@
 		<h3>Order status:</h3>
 		<h4>Meals:</h4>
 		<ul>
-		  <li ng-repeat="o in order">{{o.name}}, {{o.amount}}</li>
+		  <li ng-repeat="o in order">{{o.item.name}}, {{o.amount}}</li>
 		</ul>
 		<h4>Zone:</h4>
 	</section>
