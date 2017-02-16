@@ -1,0 +1,73 @@
+var burgers = [
+    {
+        "name": "BBQ Burger",
+        "calories": 800,
+        "gluten": true,
+        "lactose": true,
+        "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cheeseburger.jpg/300px-Cheeseburger.jpg",
+        "ingredients": [
+            "bread",
+            "beef",
+            "lettuce",
+            "BBQ sauce",
+            "tomato",
+            "cheese",
+            "onion"
+        ],
+        "price": 65;
+    },
+    {
+        "name": "Vegan Burger",
+        "calories": 600,
+        "gluten": false,
+        "lactose": false,
+        "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cheeseburger.jpg/300px-Cheeseburger.jpg",
+        "ingredients": [
+            "bread (gluten-free)",
+            "quorn",
+            "lettuce",
+            "ketchup",
+            "pickles",
+            "tomato",
+            "onion"
+        ],
+        "price": 62;
+    },
+    {
+        "name": "Original Burger",
+        "calories": 700,
+        "gluten": true,
+        "lactose": true,
+        "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cheeseburger.jpg/300px-Cheeseburger.jpg",
+        "ingredients": [
+            "bread",
+            "beef",
+            "lettuce",
+            "ketchup",
+            "bacon",
+            "cheese",
+            "pickles",
+            "tomato",
+            "onion"
+        ],
+        "price": 57;
+    },
+    {
+        "name": "Original Burger (no onion)",
+        "calories": 675,
+        "gluten": true,
+        "lactose": true,
+        "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cheeseburger.jpg/300px-Cheeseburger.jpg",
+        "ingredients": [
+            "bread",
+            "beef",
+            "lettuce",
+            "ketchup",
+            "bacon",
+            "cheese",
+            "pickles",
+            "tomato"
+        ],
+        "price": 57;
+    }
+];
