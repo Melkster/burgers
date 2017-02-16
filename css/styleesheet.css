@@ -3,6 +3,11 @@ header {
   padding: 10px;
 }
 
+main {
+  display: flex;
+  border: solid black 2px;
+}
+
 section.burgers {
   border: solid gray 2px;
   padding: 10px;
@@ -12,7 +17,15 @@ section.burgers li {
 	border: gray solid 2px;
 	padding: 10px;
 	list-style: none;
-	margin-right: 5px;
+	margin: 0 5px 5px 0;
 	/*float: left;*/
 	display: inline-block;
+}
+
+.order-status {
+  padding: 10px;
+}
+
+.order-status h3 {
+  width: 200px;
 }
