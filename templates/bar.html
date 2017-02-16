@@ -1,8 +1,18 @@
-<div class='jumbotron'>
-  {{ title }}
-</div>
+<!--<div class='jumbotron'>-->
+  <!--{{ title }}-->
+<!--</div>-->
 
-<div>
-  <p>Enter your name: <input type = 'text' ng-model = 'name'></p>
-  <p>{{ hej }} <span ng-bind = 'name'></span></p>
-</div>
+<!--<div>-->
+  <!--<p>Enter your name: <input type = 'text' ng-model = 'name'></p>-->
+  <!--<p>{{ hej }} <span ng-bind = 'name'></span></p>-->
+<!--</div>-->
+
+<header>
+	<h1>Bar</h1>
+</header>
+<main>
+	<h3>Choose meal:</h3>
+	<ul>
+	  <li *ngFor="let burger-name of getNames(brgs)">{{burger-name}}</li>
+	</ul>
+</main>
