@@ -4,19 +4,11 @@ var app = angular.module('app', []).
 	controller: function($scope) {
 	  $scope.hej = 'Hej';
 	  $scope.title = 'I like trains.';
-	  $scope.getNames = function(burgers){
-		console.log("hej");
-		return burgers;
+	  $scope.burgers = burgers;
+	  $scope.getBurgerNames = function(burgers) {
+		names = [];
+		for (b in burgers) names.push(burgers[b].name);
+		return names;
 	  };
 	}
   });
-
-//function getBurgerNames(burgers) {
-  //names = [];
-  //for b in burgers names.push(burgers[b].name);
-  //return names;
-//}
-
-var brgs = [
-  {'name': 'b1'}
-]

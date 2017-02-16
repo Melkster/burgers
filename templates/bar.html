@@ -13,6 +13,6 @@
 <main>
 	<h3>Choose meal:</h3>
 	<ul>
-	  <li *ngFor="let burger-name of getNames(brgs)">{{burger-name}}</li>
+	  <li ng-repeat="name in getBurgerNames(burgers)">{{name}}</li>
 	</ul>
 </main>

@@ -14,7 +14,7 @@ var burgers = [
             "cheese",
             "onion"
         ],
-        "price": 65;
+        "price": 65
     },
     {
         "name": "Vegan Burger",
@@ -31,7 +31,7 @@ var burgers = [
             "tomato",
             "onion"
         ],
-        "price": 62;
+        "price": 62
     },
     {
         "name": "Original Burger",
@@ -50,7 +50,7 @@ var burgers = [
             "tomato",
             "onion"
         ],
-        "price": 57;
+        "price": 57
     },
     {
         "name": "Original Burger (no onion)",
@@ -68,6 +68,6 @@ var burgers = [
             "pickles",
             "tomato"
         ],
-        "price": 57;
+        "price": 57
     }
-];
+]
