@@ -1,6 +1,9 @@
-var app = angular.module('app', []);
+var app = angular.module('app', []).
+  component('menu', {
+	templateUrl: 'templates/menu.html',
+	controller: function($scope) {
+	  $scope.hej = 'Hej';
+	  $scope.title = 'I like trains.'
+	}
+  });
 
-app.controller('ctrl', function($scope) {
-  $scope.hej = 'Hej';
-  $scope.title = 'I like trains.'
-});
