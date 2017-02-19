@@ -11,7 +11,7 @@
 			  <span class="md-headline"> {{burger.name}} </span>
 			</md-card-title-text>
 		  </md-card-title>
-		  <img src={{burger.image}}>
+		  <img ng-src={{burger.image}}>
 		</md-card>
 	  </md-content>
 	  <h3>Choose zone:</h3>
@@ -31,9 +31,9 @@
 		<md-list ng-cloak>
 		  <md-list-item class="secondary-button-padding" ng-repeat="o in order">
 			{{o.item.name}}, {{o.amount}}
-			<button class="md-secondary"  ng-click="removeItem(o.item, order)">
+			<button class="md-secondary md-fab"  ng-click="removeItem(o.item, order)">
 			  x
-			  <!--<i class="material-icons">face</i>-->
+			  <!--<i class="material-icons">close</i>-->
 			</button>
 		  </md-list-item>
 
