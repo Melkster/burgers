@@ -1,4 +1,4 @@
-var app = angular.module('app', []);
+var app = angular.module('app', ['ngMaterial']);
 
 app.component('bar', {
 	templateUrl: 'templates/bar.html',
