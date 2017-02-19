@@ -5,7 +5,13 @@ app.component('bar', {
 	controller: function($scope) {
 	  $scope.burgers = burgers;
 	  $scope.order = [];
+	  $scope.zoneChosen = 0;
 
+
+	  $scope.setZone = function(zone) {
+	      $scope.zoneChosen = zone;
+	      console.log(zone);
+	  };
 	  $scope.addItem = function(item) {
 		var itemInList = $scope.itemExists($scope.order, item);
 		var newItem = {
