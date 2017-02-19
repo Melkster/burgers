@@ -32,6 +32,10 @@ app.component('bar', {
 		return null;
 	  };
 
+	  $scope.submitOrder = function() {
+		console.log($scope.order);
+	  }
+
 	  //$scope.getItem = function(itemName, items) {
 		//for (i in items) if (items[i].name == itemName) {
 		  //return items[i];
