@@ -32,6 +32,19 @@ app.component('bar', {
 		return null;
 	  };
 
+
+          $scope.showPrompt = function(item){
+              var custom = prompt("Special order", "What to change");
+              console.log(item.customs);
+              item.customs.push(custom);
+              console.log(item.customs);
+              var newItem = {
+                  'item' : item,
+                  'amount' : 1
+              }
+              $scope.order.push(newItem);
+          };
+
 	  //$scope.getItem = function(itemName, items) {
 		//for (i in items) if (items[i].name == itemName) {
 		  //return items[i];

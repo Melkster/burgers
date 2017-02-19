@@ -13,6 +13,13 @@
 		  </md-card-title>
 		  <img src={{burger.image}}>
 		</md-card>
+                <md-card ng-repeat="burger in burgers" class="md-primary md-raised" ng-click="showPrompt({'name': burger.name, 'customs': []})"  >
+                  <md-card-title>
+                    <md-card-title-text>
+                      <span class="md-headline"> {{burger.name}} </span>
+                    </md-card-title-text>
+                  </md-card-title>
+                  <img src={{burger.image}} width="30%" height="30%">
 	  </md-content>
 	</section>
 	<section class="order-status" layout="column">
@@ -20,7 +27,8 @@
 		<h4>Meals:</h4>
 		<ul>
 		  <li ng-repeat="o in order">
-			{{o.item.name}}, {{o.amount}}
+		        {{o.item.name}}, {{o.amount}}, {{o.item.customs[0]}}
+
 			<button ng-click="removeItem(o.item, order)">x</button>
 		  </li>
 		</ul>
