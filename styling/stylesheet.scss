@@ -1,6 +1,9 @@
+$padding: 10px; 
+$border: solid gray 2px;
+
 header {
   background-color: #ccc;
-  padding: 10px;
+  padding: $padding;
 }
 
 main {
@@ -9,23 +12,24 @@ main {
 }
 
 section.burgers {
-  border: solid gray 2px;
-  padding: 10px;
-}
+  border: $border;
+  padding: $padding;
 
-section.burgers li {
-	border: gray solid 2px;
-	padding: 10px;
+  li {
+	border: $border;
+	padding: $padding;
 	list-style: none;
 	margin: 0 5px 5px 0;
 	/*float: left;*/
 	display: inline-block;
+  }
 }
 
 .order-status {
   padding: 10px;
+
+  h3 {
+	width: 200px;
+  }
 }
 
-.order-status h3 {
-  width: 200px;
-}

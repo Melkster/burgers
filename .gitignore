@@ -40,3 +40,6 @@ Thumbs.db
 *.swp
 *~
 node_modules/
+.sass-cache/
+*.css.map
+styling/css/
