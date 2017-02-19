@@ -11,3 +11,7 @@ server:
 tree:
 	clear
 	tree -I node_modules
+
+clean:
+	rm styling/css/*.css
+	rm styling/css/*.css.map
