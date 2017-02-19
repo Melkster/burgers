@@ -19,8 +19,11 @@ app.component('bar', {
 
 	  $scope.removeItem = function(item, items) {
 		for (i in items) if (angular.equals(items[i].item, item)) {
-		  items.splice(i, 1); //?
-		  return;
+		  if (items[i].amount > 1) items[i].amount--;
+		  else {
+			items.splice(i, 1);
+			return;
+		  }
 		}
 	  }
 
