@@ -38,6 +38,7 @@ Thumbs.db
 
 # Other
 *.swp
+*.swo
 *~
 node_modules/
 .sass-cache/
