@@ -4,6 +4,7 @@
 
 <main layout="row">
   <section layout="row">
+
 	<section class="burgers">
 	  <h3>Choose meal:</h3>
 	  <md-content layout="row" layout-wrap>
@@ -28,6 +29,7 @@
 		  </md-card-title>
 		</md-card>
 	  </md-content>
+
 	</section>
   </section>
 
@@ -56,7 +58,7 @@
 	  </md-list>
 	</md-content>
 
-	<div flex layout="row" layout-align="end end">
+	<div flex layout="row" layout-align="end start">
 	  <md-button class="md-raised" ng-click="order = []">Cancel</md-button>
 	  <md-button class="md-raised md-primary" ng-click="submitOrder()">Submit</md-button>
 	</div>

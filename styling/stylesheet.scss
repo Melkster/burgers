@@ -6,14 +6,9 @@ header {
   padding: $padding;
 }
 
-main {
-  //display: flex;
-}
-
 section.burgers {
-  //flex-wrap: wrap;
-  //border: $border;
   padding: $padding;
+  cursor: pointer;
 
   md-card {
 	width: 200px;
@@ -21,8 +16,8 @@ section.burgers {
 }
 
 .order-status {
-  //position: relative;
-  padding: 10px;
+  //padding: $padding;
+  width: 600px;
 
   h3 {
 	//width: 200px;
