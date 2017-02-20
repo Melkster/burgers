@@ -10,15 +10,11 @@ app.component('bar', {
 
 	  $scope.setZone = function(zone) {
 	      $scope.zoneChosen = zone;
-	      console.log(zone);
 	  };
 	  $scope.addItem = function(item, customs) {
 		var itemInOrder = $scope.itemExists($scope.order, item);
 		var newItem = {
-		  'item': {
-			'name': item.name,
-			'price': item.price
-		  },
+		  'item': item,
 		  'amount': 1,
 		  'customs': customs
 		}
@@ -45,7 +41,6 @@ app.component('bar', {
 	  $scope.sum = function(order) {
 		var sum = 0;
 		for (i in order) sum += order[i].item.price*order[i].amount;
-		//console.log(order[0].item)
 		return sum;
 	  }
 
