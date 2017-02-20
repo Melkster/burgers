@@ -1,9 +1,11 @@
 <header>
-	<h1>Bar</h1>
+  <h1>Bar</h1>
 </header>
-<main>
+
+<main layout="row">
+  <section layout="row">
 	<section class="burgers">
-	<h3>Choose meal:</h3>
+	  <h3>Choose meal:</h3>
 	  <md-content layout="row" layout-wrap>
 		<md-card ng-repeat="burger in burgers" ng-click="addItem(burger, [])">
 		  <md-card-title>
@@ -18,44 +20,45 @@
 
 	  <h3>Choose zone:</h3>
 	  <md-content layout="row" layout-wrap>
-	    <md-card flex ng-repeat="zone in [1,2,3,4,5,6,7,8,9]" ng-click="setZone(zone)">
-	      <md-card-title>
-		<md-card-title-text>
-		  <span class="md-headline"> {{zone}} </span>
-		</md-card-title-text>
+		<md-card flex ng-repeat="zone in [1,2,3,4,5,6,7,8,9]" ng-click="setZone(zone)">
+		  <md-card-title>
+			<md-card-title-text>
+			  <span class="md-headline"> {{zone}} </span>
+			</md-card-title-text>
 		  </md-card-title>
 		</md-card>
 	  </md-content>
 	</section>
+  </section>
 
-	<section class="order-status" layout="column">
-	  <h3>Order status:</h3>
-	  <md-content>
-		<md-list class="md-dense" flex>
+  <section class="order-status" layout="column">
+	<h3>Order status:</h3>
+	<md-content>
+	  <md-list class="md-dense" flex>
 		<md-subheader class="md-no-sticky">Meals:</md-subheader>
-		  <md-list-item class="secondary-button-padding" ng-repeat="o in order">
-			{{o.item.name}}, {{o.amount}}
-			<button class="md-secondary md-fab"  ng-click="removeItem(o.item, order)">
-			  x
-			  <!--<i class="material-icons">close</i>-->
-			</button>
-		  </md-list-item>
+		<md-list-item class="secondary-button-padding" ng-repeat="o in order">
+		  {{o.item.name}}, {{o.amount}}
+		  <button class="md-secondary md-fab"  ng-click="removeItem(o.item, order)">
+			x
+			<!--<i class="material-icons">close</i>-->
+		  </button>
+		</md-list-item>
 
-		  <md-divider></md-divider>
+		<md-divider></md-divider>
 
-		  <md-subheader>Zone:</md-subheader>
-		  <md-list-item>{{zoneChosen}}</md-list-item>
+		<md-subheader>Zone:</md-subheader>
+		<md-list-item>{{zoneChosen}}</md-list-item>
 
-		  <md-divider></md-divider>
+		<md-divider></md-divider>
 
-		  <md-subheader>Total price:</md-subheader>
-		  <md-list-item>{{sum(order)}} kr</md-list-item>
-		</md-list>
-	  </md-content>
+		<md-subheader>Total price:</md-subheader>
+		<md-list-item>{{sum(order)}} kr</md-list-item>
+	  </md-list>
+	</md-content>
 
-	  <div flex layout="row" layout-align="end end">
-		<md-button class="md-raised" ng-click="order = []">Cancel</md-button>
-		<md-button class="md-raised md-primary" ng-click="submitOrder()">Submit</md-button>
-	  </div>
-	</section>
+	<div flex layout="row" layout-align="end end">
+	  <md-button class="md-raised" ng-click="order = []">Cancel</md-button>
+	  <md-button class="md-raised md-primary" ng-click="submitOrder()">Submit</md-button>
+	</div>
+  </section>
 </main>
