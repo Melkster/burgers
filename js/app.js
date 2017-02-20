@@ -12,15 +12,19 @@ app.component('bar', {
 	      $scope.zoneChosen = zone;
 	      console.log(zone);
 	  };
-	  $scope.addItem = function(item) {
-		var itemInList = $scope.itemExists($scope.order, item);
+	  $scope.addItem = function(item, customs) {
+		var itemInOrder = $scope.itemExists($scope.order, item);
 		var newItem = {
-		  'item': item,
-		  'amount': 1
+		  'item': {
+			'name': item.name,
+			'price': item.price
+		  },
+		  'amount': 1,
+		  'customs': customs
 		}
 
-		if (itemInList === null) $scope.order.push(newItem);
-		else itemInList.amount++;
+		if (itemInOrder === null) $scope.order.push(newItem);
+		else itemInOrder.amount++;
 	  };
 
 	  $scope.removeItem = function(item, items) {
@@ -37,6 +41,13 @@ app.component('bar', {
 		for (i in list) if (angular.equals(list[i].item.name, item.name)) return list[i];
 		return null;
 	  };
+
+	  $scope.sum = function(order) {
+		var sum = 0;
+		for (i in order) sum += order[i].item.price*order[i].amount;
+		//console.log(order[0].item)
+		return sum;
+	  }
 
 	  $scope.submitOrder = function() {
 		console.log($scope.order);
