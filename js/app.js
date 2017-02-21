@@ -49,7 +49,14 @@ app.component('bar', {
 	  }
 
 	  $scope.submitOrder = function() {
-		console.log($scope.order);
+		if ($scope.order.length != 0){
+		  console.log($scope.order);
+		  $scope.clearOrder();
+		}
+	  }
+
+	  $scope.clearOrder = function() {
+		$scope.order = [];
 	  }
 
 	  //$scope.getItem = function(itemName, items) {
