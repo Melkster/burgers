@@ -33,6 +33,10 @@ app.component('bar', {
 		}
 	  }
 
+	  $scope.incrementItem = function(orderItem) {
+		orderItem.amount ++;
+	  }
+
 	  $scope.itemExists = function(list, item) {
 		for (i in list) if (angular.equals(list[i].item.name, item.name)) return list[i];
 		return null;

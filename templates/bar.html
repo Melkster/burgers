@@ -40,10 +40,9 @@
 		<md-subheader class="md-no-sticky">Meals:</md-subheader>
 		<md-list-item class="secondary-button-padding" ng-repeat="o in order">
 		  {{o.item.name}}, {{o.amount}}
-		  <button class="md-secondary md-fab"  ng-click="removeItem(o.item, order)">
-			x
-			<!--<i class="material-icons">close</i>-->
-		  </button>
+		  <button class="md-secondary md-fab"  ng-click="incrementItem(o)"> + </button>
+		  <button class="md-secondary md-fab"  ng-click="removeItem(o.item, order)"> - </button>
+		  <!--<i class="material-icons">close</i>--> 
 		</md-list-item>
 
 		<md-divider></md-divider>
