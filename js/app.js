@@ -5,7 +5,7 @@ app.component('bar', {
 	controller: function($scope) {
 	  $scope.burgers = burgers;
 	  $scope.order = [];
-	  $scope.zoneChosen = 0;
+	  $scope.zoneChosen = '-';
 
 
 	  $scope.setZone = function(zone) {
