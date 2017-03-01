@@ -4,7 +4,7 @@ var burgers = [
         "calories": 800,
         "gluten": true,
         "lactose": true,
-        "image": "images/burgers/burger1.jpg",
+        "image": "images/burgers/bacon.png",
         "ingredients": [
             "bread",
             "beef",
@@ -21,7 +21,7 @@ var burgers = [
         "calories": 600,
         "gluten": false,
         "lactose": false,
-        "image": "images/burgers/burger1.jpg",
+        "image": "images/burgers/vegan.png",
         "ingredients": [
             "bread (gluten-free)",
             "quorn",
@@ -38,7 +38,7 @@ var burgers = [
         "calories": 700,
         "gluten": true,
         "lactose": true,
-        "image": "images/burgers/burger1.jpg",
+        "image": "images/burgers/burger1.png",
         "ingredients": [
             "bread",
             "beef",
@@ -57,7 +57,7 @@ var burgers = [
         "calories": 675,
         "gluten": true,
         "lactose": true,
-        "image": "images/burgers/burger1.jpg",
+        "image": "images/burgers/burger1.png",
         "ingredients": [
             "bread",
             "beef",
@@ -75,7 +75,7 @@ var burgers = [
         "calories": 675,
         "gluten": true,
         "lactose": true,
-        "image": "images/burgers/burger1.jpg",
+        "image": "images/burgers/burger1.png",
         "ingredients": [
             "bread",
             "beef",
@@ -93,7 +93,7 @@ var burgers = [
         "calories": 650,
         "gluten": true,
         "lactose": true,
-        "image": "images/burgers/burger1.jpg",
+        "image": "images/burgers/burger1.png",
         "ingredients": [
             "bread",
             "beef",
@@ -110,7 +110,7 @@ var burgers = [
         "calories": 800,
         "gluten": true,
         "lactose": true,
-        "image": "images/burgers/burger1.jpg",
+        "image": "images/burgers/nachos.png",
         "ingredients": [
             "nacho chips",
             "garlic",
@@ -128,7 +128,7 @@ var burgers = [
         "calories": 675,
         "gluten": true,
         "lactose": true,
-        "image": "images/burgers/burger1.jpg",
+        "image": "images/burgers/salad.png",
         "ingredients": [
             "lettuce",
             "chicken",

@@ -9,13 +9,21 @@
 	  <h3>Choose meal:</h3>
 	  <md-content layout="row" layout-wrap>
 		<md-card ng-repeat="burger in burgers" ng-click="addItem(burger, [])">
-		  <md-card-title>
-			<md-card-title-text>
-			  <span class="md-headline"> {{burger.name}} </span>
-			  <span class="md-subheader"> {{burger.price}} kr</span>
-			</md-card-title-text>
-		  </md-card-title>
-		  <img ng-src={{burger.image}}>
+		  <!--<md-card-title>-->
+		  <!--<md-card-title-text>-->
+		  <!--<span class="md-headline"> {{burger.name}} </span>-->
+		  <!--<span class="md-subheader"> {{burger.price}} kr</span>-->
+		  <!--</md-card-title-text>-->
+		  <!--</md-card-title>-->
+
+		  <md-card-content>
+			<span class="md-headline"> {{burger.name}} </span>
+			<span class="md-subheader"> {{burger.price}} kr</span>
+			<img ng-src={{burger.image}} class="md-card-image" alt="Washed Out">
+		  </md-card-content>
+		  <md-card-footer>
+			Footer
+		  </md-card-footer>
 		</md-card>
 	  </md-content>
 
