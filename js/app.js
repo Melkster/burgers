@@ -13,7 +13,7 @@ app.config(['$routeProvider',
 	  })
   }]);
 
-app.controller('bar-controller', function($scope) {
+app.controller('bar-controller', function($scope, $mdDialog) {
   $scope.burgers = burgers;
   $scope.order = [];
   $scope.zoneChosen = '-';
