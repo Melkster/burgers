@@ -8,10 +8,13 @@ header {
 
 section.burgers {
   padding: $padding;
-  cursor: pointer;
 
   md-card {
 	width: 300px;
+
+	md-card-content{
+	  cursor: pointer;
+	}
 
 	img {
 	  //width: auto;
