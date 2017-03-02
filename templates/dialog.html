@@ -1,0 +1,12 @@
+<div id ="customize-div">
+<ul id="customize">
+    <h3>Utan:</h3>
+    <li ng-repeat="i in ingredients" value="{{i}}">
+        <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+            {{i}}
+        </md-checkbox>
+    </li>
+    <input ng-model="user.title">
+    <md-button class="md-raised" ng-click="">Ok</md-button>
+</ul>
+</div>
