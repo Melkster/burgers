@@ -1,8 +1,19 @@
-var app = angular.module('app', ['ngMaterial']);
+var app = angular.module('app', ['ngMaterial', 'ngRoute']);
 
-app.component('bar', {
-	templateUrl: 'templates/bar.html',
-	controller: function($scope) {
+app.config(['$routeProvider',
+  function($routeProvider) {
+	$routeProvider.
+	  when('/', {
+		templateUrl: 'templates/bar.html',
+		controller: 'bar-controller'
+	  })
+	  .when('/kitchen', {
+		templateUrl: 'test.html',
+		controller: 'kitchen-controller'
+	  })
+  }]);
+
+app.controller('bar-controller', function($scope) {
 	  $scope.burgers = burgers;
 	  $scope.order = [];
 	  $scope.zoneChosen = '-';
@@ -90,5 +101,5 @@ app.component('bar', {
 		  //controller: DialogController
 		//});
 	  //}
-	}
+	//}
 });
