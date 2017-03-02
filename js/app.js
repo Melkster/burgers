@@ -8,7 +8,7 @@ app.config(['$routeProvider',
 		controller: 'bar-controller'
 	  })
 	  .when('/kitchen', {
-		templateUrl: 'test.html',
+		templateUrl: 'kitchen.html',
 		controller: 'kitchen-controller'
 	  })
   }]);
@@ -17,7 +17,7 @@ app.controller('bar-controller', function($scope) {
 	  $scope.burgers = burgers;
 	  $scope.order = [];
 	  $scope.zoneChosen = '-';
-
+        
 
 	  $scope.setZone = function(zone) {
 	      $scope.zoneChosen = zone;
@@ -75,31 +75,26 @@ app.controller('bar-controller', function($scope) {
 		  //return items[i];
 		//}
 	  //}
-	  //$scope.showCustomize = function($event) {
-		//var parentEl = angular.element(document.body);
-		//$mdDialog.show({
-		  //parent: parentEl,
-		  //targetEvent: $event,
-		  //template:
-		  //'<md-dialog aria-label="List dialog">' +
-		  //'  <md-dialog-content>'+
-		  //'    <md-list>'+
-		  //'      <md-list-item ng-repeat="item in items">'+
-		  //'       <p>Number {{item}}</p>' +
-		  //'      '+
-		  //'    </md-list-item></md-list>'+
-		  //'  </md-dialog-content>' +
-		  //'  <md-dialog-actions>' +
-		  //'    <md-button ng-click="closeDialog()" class="md-primary">' +
-		  //'      Close Dialog' +
-		  //'    </md-button>' +
-		  //'  </md-dialog-actions>' +
-		  //'</md-dialog>',
-		  //locals: {
-			//items: $scope.items
-		  //},
-		  //controller: DialogController
-		//});
-	  //}
-	//}
+
+  $scope.showAdvanced = function(ev) {
+	console.log("hej");
+	$mdDialog.show({
+	  templateUrl: 'templates/dialog.html',
+	  controller: 'customize-controller',
+	  parent: angular.element(document.body),
+	  targetEvent: ev,
+	  clickOutsideToClose:true,
+	  fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+	})
+	  .then(function(answer) {
+		$scope.status = 'You said the information was "' + answer + '".';
+	  }, function() {
+		$scope.status = 'You cancelled the dialog.';
+	  });
+  };
+
+});
+
+app.controller('customize-controller', function($scope) {
+    $scope.ingredients = ["bacon", "lettuce", "bread", "onion", "ketchup", "bbq-sauce", "cheese"];
 });
