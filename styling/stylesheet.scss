@@ -32,3 +32,18 @@ section.burgers {
 	//width: 200px;
   }
 }
+
+#customize {
+  list-style: none;
+  
+  li {
+    height: 75px;
+    width: 100%;
+
+    md-checkbox {
+      display: block;
+    }
+  }
+}
+
+

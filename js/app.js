@@ -6,7 +6,7 @@ app.component('bar', {
 	  $scope.burgers = burgers;
 	  $scope.order = [];
 	  $scope.zoneChosen = '-';
-
+        
 
 	  $scope.setZone = function(zone) {
 	      $scope.zoneChosen = zone;
@@ -68,6 +68,7 @@ app.component('bar', {
             console.log("hej");
             $mdDialog.show({
                 templateUrl: 'templates/dialog.html',
+                controller: 'customize-controller',
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose:true,
@@ -79,5 +80,13 @@ app.component('bar', {
                     $scope.status = 'You cancelled the dialog.';
                 });
         };
+
+        //Dialog things
+
+        
     }
+});
+
+app.controller('customize-controller', function($scope) {
+    $scope.ingredients = ["bacon", "lettuce", "bread", "onion", "ketchup", "bbq-sauce", "cheese"];
 });
