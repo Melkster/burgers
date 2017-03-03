@@ -3,25 +3,28 @@ var app = angular.module('app', ['ngMaterial', 'ngRoute']);
 app.config(['$routeProvider',
   function($routeProvider) {
 	$routeProvider.
-	  when('/', {
+	  when('/bar', {
 		templateUrl: 'templates/bar.html',
 		controller: 'bar-controller'
 	  })
 	  .when('/kitchen', {
-		templateUrl: 'kitchen.html',
+		templateUrl: 'templates/kitchen.html',
 		controller: 'kitchen-controller'
 	  })
+	  .otherwise ({
+		redirectTo :'/bar'
+	});
   }]);
 
-app.controller('bar-controller', function($scope, $mdDialog) {
+app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   $scope.burgers = burgers;
   $scope.order = [];
   $scope.zoneChosen = '-';
 
-
   $scope.setZone = function(zone) {
 	$scope.zoneChosen = zone;
   };
+
   $scope.addItem = function(item, customs) {
 	var itemInOrder = $scope.itemExists($scope.order, item);
 	var newItem = {
@@ -62,6 +65,7 @@ app.controller('bar-controller', function($scope, $mdDialog) {
   $scope.submitOrder = function() {
 	if ($scope.order.length != 0){
 	  console.log($scope.order);
+	  orderService.addOrder($scope.order);
 	  $scope.clearOrder();
 	}
   }
@@ -69,12 +73,6 @@ app.controller('bar-controller', function($scope, $mdDialog) {
   $scope.clearOrder = function() {
 	$scope.order = [];
   }
-
-  //$scope.getItem = function(itemName, items) {
-  //for (i in items) if (items[i].name == itemName) {
-  //return items[i];
-  //}
-  //}
 
   $scope.showAdvanced = function(ev) {
 	console.log("hej");
@@ -92,7 +90,27 @@ app.controller('bar-controller', function($scope, $mdDialog) {
 		$scope.status = 'You cancelled the dialog.';
 	  });
   };
+});
 
+app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
+  $scope.orders = orderService.getOrder();
+});
+
+app.service('orderService', function() {
+  var orders = [];
+
+  var addOrder = function(order) {
+	orders.push(order);
+  }
+  
+  var getOrder = function() {
+	return orders;
+  }
+
+  return { // make sure to return all public functions
+    addOrder: addOrder,
+    getOrder: getOrder
+  };
 });
 
 app.controller('customize-controller', function($scope) {
