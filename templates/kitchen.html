@@ -1,0 +1,16 @@
+<header>
+  <h1>Kitchen</h1>
+</header>
+
+<md-content layout="column">
+  <md-card ng-repeat="order in orders">
+	<md-card-content ng-click="addItem(burger, [])">
+
+	  <md-list class="md-dense" flex>
+		<md-list-item class="secondary-button-padding" ng-repeat="meal in order">
+		  {{meal.item.name}}, {{meal.amount}}
+		</md-list-item>
+
+	  </md-card-content>
+	</md-card>
+  </md-content>
