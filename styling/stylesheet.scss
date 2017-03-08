@@ -17,8 +17,6 @@ section.burgers {
 	}
 
 	img {
-	  //width: auto;
-	  //height: 100%;
 	  max-width: 100%;
 	}
   }
@@ -26,10 +24,22 @@ section.burgers {
 
 .order-status {
   //padding: $padding;
-  width: 600px;
+  min-width: 500px;
 
   h3 {
 	//width: 200px;
+  }
+  
+  button {
+	padding: 5px 0 5px 0;
+  }
+
+  //md-button {
+	//float: right;
+  //}
+
+  md-content {
+	max-width: 900;
   }
 }
 
