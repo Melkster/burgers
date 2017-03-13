@@ -97,7 +97,23 @@ app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
 
     $scope.removeMeal = function(meal) {
         meal.amount--;
+        for (var i = 0; i < $scope.orders.length; i++) {
+            var order = $scope.orders[i];
+            console.log(order);
+            if ($scope.orderEmpty(order)) {
+                $scope.orders.splice(i, 1);
+            }
+        }
+    }
+
+    $scope.orderEmpty = function(order) {
         
+        for (var i = 0; i < order.length; i++) {
+            var meal = order[i];
+            console.log(meal.amount);
+            if (meal.amount != 0) return false;
+        }
+        return true;
     }
 
     $scope.range = function(n) {
