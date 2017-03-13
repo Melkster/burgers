@@ -1,5 +1,6 @@
 $padding: 10px; 
 $border: solid gray 2px;
+$card-width: 200px;
 
 header {
   color: white;
@@ -19,6 +20,14 @@ section.burgers {
 
 	img {
 	  max-width: 100%;
+	}
+  }
+
+  .favourites {
+	//width: 100%;
+
+	md-card {
+	  width: $card-width / 2;
 	}
   }
 }
