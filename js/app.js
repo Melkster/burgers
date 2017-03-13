@@ -95,9 +95,18 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
     $scope.orders = orderService.getOrder();
 
-    $scope.removeOrder = function(order) {
-        $scope.orders.splice($scope.orders.indexOf(order), 1);
-        console.log("hej");
+    $scope.removeMeal = function(meal) {
+        meal.amount--;
+        
+    }
+
+    $scope.range = function(n) {
+        var array = []
+        for (var i = 1; i <= n; i++) {
+            array.push(i);
+        }
+        
+        return array;
     }
 });
 
