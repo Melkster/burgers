@@ -4,7 +4,9 @@ Instructions for Wermlands Pub by B-team
 
 Before you can run the webiste, make sure you have npm and SASS installed.
 
-Write 'make' to install all dependencies and start the server
+```
+Run 'make' to install all dependencies and start the server
+```
 
 
 There are two main features that currently aren't implemented in the website:
