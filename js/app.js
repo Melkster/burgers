@@ -73,7 +73,8 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   }
 
   $scope.clearOrder = function() {
-	$scope.order = [];
+      $scope.order = [];
+      $scope.zoneChosen = '-';
   }
 
   $scope.addCustom = function(ev) {
