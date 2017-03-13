@@ -20,6 +20,7 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   $scope.burgers = burgers;
   $scope.order = [];
   $scope.zoneChosen = '-';
+  $scope.ingredients = ["bacon", "lettuce", "bread", "onion", "ketchup", "bbq-sauce", "cheese"];
 
   $scope.setZone = function(zone) {
 	$scope.zoneChosen = zone;
@@ -74,15 +75,20 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 	$scope.order = [];
   }
 
-  $scope.showAdvanced = function(ev) {
+  $scope.addCustom = function(ev) {
+        
+  }
+
+  $scope.showAdvanced = function(ev, burger) {
 	console.log("hej");
 	$mdDialog.show({
 	  templateUrl: 'templates/dialog.html',
-	  controller: 'customize-controller',
+	  controller: 'bar-controller',
 	  parent: angular.element(document.body),
 	  targetEvent: ev,
 	  clickOutsideToClose:true,
 	  fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+          
 	})
 	  .then(function(answer) {
 		$scope.status = 'You said the information was "' + answer + '".';
@@ -118,6 +124,6 @@ app.service('orderService', function() {
   };
 });
 
-app.controller('customize-controller', function($scope) {
-  $scope.ingredients = ["bacon", "lettuce", "bread", "onion", "ketchup", "bbq-sauce", "cheese"];
-});
+//app.controller('customize-controller', function($scope) {
+ // $scope.ingredients = ["bacon", "lettuce", "bread", "onion", "ketchup", "bbq-sauce", "cheese"];
+//});
