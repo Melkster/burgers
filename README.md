@@ -11,7 +11,7 @@ Run 'make' to install all dependencies and start the server
 If you want to view the kitchen tab you have to write: http://localhost:3000/#/kitchen in the SAME brower tab as http://localhost:3000/#/bar that is currently viewing.
 
 
-There are two main features that currently aren't implemented in the website:
+##### There are two main features that currently aren't implemented in the website:
   - Submitting in the 'customize' menu for the burgers currently doesn't do anything
   - To see the submitted orders you have to read in the kitchen in the same session (browser tab), otherwise they won't show
 
