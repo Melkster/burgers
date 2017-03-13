@@ -18,6 +18,7 @@ app.config(['$routeProvider',
 
 app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   $scope.burgers = burgers;
+  $scope.favorites = favorites;
   $scope.order = [];
   $scope.zoneChosen = '-';
   $scope.ingredients = ["bacon", "lettuce", "bread", "onion", "ketchup", "bbq-sauce", "cheese"];
@@ -101,9 +102,39 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
     $scope.orders = orderService.getOrder();
 
-    $scope.removeOrder = function(order) {
-        $scope.orders.splice($scope.orders.indexOf(order), 1);
-        console.log("hej");
+    $scope.removeMeal = function(meal) {
+        meal.amount--;
+        for (var i = 0; i < $scope.orders.length; i++) {
+            var order = $scope.orders[i];
+            
+            if ($scope.orderEmpty(order)) {
+                $scope.orders.splice(i, 1);
+            }
+        }
+        
+    }
+
+    $scope.orderEmpty = function(order) {
+        
+        for (var i = 0; i < order.length; i++) {
+            var meal = order[i];
+            
+            if (meal.amount != 0) return false;
+        }
+        return true;
+    }
+
+    $scope.range = function(n) {
+        var array = []
+        for (var i = 1; i <= n; i++) {
+            array.push(i);
+        }
+        
+        return array;
+    }
+
+    $scope.noOrders = function() {
+        return $scope.orders.length == 0;
     }
 });
 

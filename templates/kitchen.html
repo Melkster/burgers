@@ -1,13 +1,15 @@
+<h3 ng-show="noOrders()">There is nothing in the queue.</h3>
 <md-content layout="column">
-    <md-card ng-repeat="order in orders" ng-click="removeOrder(order)">
-        
+    
+    <md-card ng-repeat="order in orders">
 	<md-card-content ng-click="addItem(burger, [])">
-
 	  <md-list class="md-dense" flex>
-		<md-list-item class="secondary-button-padding" ng-repeat="meal in order">
-		    {{meal.item.name}}, {{meal.amount}}
-		</md-list-item>
-
-	  </md-card-content>
-	</md-card>
-  </md-content>
+		<div ng-repeat="meal in order">
+		  <md-list-item class="secondary-button-padding" ng-repeat="i in range(meal.amount)" ng-click="removeMeal(meal)" >
+			{{meal.item.name}}
+		  </md-list-item>
+		</div>
+	  </md-list>
+	</md-card-content>
+  </md-card>
+</md-content>

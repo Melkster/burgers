@@ -1,7 +1,10 @@
 $padding: 10px; 
 $border: solid gray 2px;
+$card-width: 250px;
+$border-color: #dadada;
 
 header {
+  color: white;
   background-color: #ccc;
   padding: $padding;
 }
@@ -10,7 +13,7 @@ section.burgers {
   padding: $padding;
 
   md-card {
-	width: 300px;
+	width: $card-width;
 
 	md-card-content{
 	  cursor: pointer;
@@ -19,11 +22,23 @@ section.burgers {
 	img {
 	  max-width: 100%;
 	}
+
+	md-card-footer {
+	  padding-top: 0;
+	}
+  }
+
+  .favorites {
+
+	md-card {
+	  width: $card-width * .7;
+	}
   }
 }
 
 .order-status {
-  //padding: $padding;
+  padding: $padding;
+  border-left: 2px solid $border-color; 
   min-width: 500px;
 
   h3 {

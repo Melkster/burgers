@@ -53,59 +53,6 @@ var burgers = [
         "price": 57
     },
     {
-        "name": "Original Burger (no onion)",
-        "calories": 675,
-        "gluten": true,
-        "lactose": true,
-        "image": "images/burgers/burger1.png",
-        "ingredients": [
-            "bread",
-            "beef",
-            "lettuce",
-            "ketchup",
-            "bacon",
-            "cheese",
-            "pickles",
-            "tomato"
-        ],
-        "price": 57
-    },
-    {
-        "name": "Original Burger (no ketckup)",
-        "calories": 675,
-        "gluten": true,
-        "lactose": true,
-        "image": "images/burgers/burger1.png",
-        "ingredients": [
-            "bread",
-            "beef",
-            "lettuce",
-            "bacon",
-            "cheese",
-            "pickles",
-            "onion",
-            "tomato"
-        ],
-        "price": 57
-    },
-    {
-        "name": "Original Burger (no onion, no ketchup)",
-        "calories": 650,
-        "gluten": true,
-        "lactose": true,
-        "image": "images/burgers/burger1.png",
-        "ingredients": [
-            "bread",
-            "beef",
-            "lettuce",
-            "bacon",
-            "cheese",
-            "pickles",
-            "tomato"
-        ],
-        "price": 57
-    },
-    {
         "name": "Nachotallrik",
         "calories": 800,
         "gluten": true,
@@ -138,5 +85,98 @@ var burgers = [
             "feta cheese"
         ],
         "price": 45
+    }
+]
+
+var favorites = [
+    {
+        "name": "BBQ Burger",
+        "calories": 800,
+        "gluten": true,
+        "lactose": true,
+        "image": "images/burgers/bacon.png",
+        "ingredients": [
+            "bread",
+            "beef",
+            "lettuce",
+            "BBQ sauce",
+            "tomato",
+            "cheese",
+            "onion"
+        ],
+        "price": 65
+    },
+    {
+        "name": "Nachotallrik",
+        "calories": 800,
+        "gluten": true,
+        "lactose": true,
+        "image": "images/burgers/nachos.png",
+        "ingredients": [
+            "nacho chips",
+            "garlic",
+            "salsa",
+            "guacamole",
+            "cheese",
+            "tomato",
+            "lettuce",
+            "cucumber"
+        ],
+        "price": 85
+    },
+    {
+        "name": "Original Burger (no onion)",
+        "calories": 675,
+        "gluten": true,
+        "lactose": true,
+        "image": "images/burgers/burger1.png",
+        "ingredients": [
+            "bread",
+            "beef",
+            "lettuce",
+            "ketchup",
+            "bacon",
+            "cheese",
+            "pickles",
+            "tomato"
+        ],
+        "price": 57
+    },    
+    {
+        "name": "Original Burger",
+        "calories": 700,
+        "gluten": true,
+        "lactose": true,
+        "image": "images/burgers/burger1.png",
+        "ingredients": [
+            "bread",
+            "beef",
+            "lettuce",
+            "ketchup",
+            "bacon",
+            "cheese",
+            "pickles",
+            "tomato",
+            "onion"
+        ],
+        "price": 57
+    },
+    {
+        "name": "Original Burger (no onion)",
+        "calories": 675,
+        "gluten": true,
+        "lactose": true,
+        "image": "images/burgers/burger1.png",
+        "ingredients": [
+            "bread",
+            "beef",
+            "lettuce",
+            "ketchup",
+            "bacon",
+            "cheese",
+            "pickles",
+            "tomato"
+        ],
+        "price": 57
     }
 ]
