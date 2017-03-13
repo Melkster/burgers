@@ -1,6 +1,7 @@
 $padding: 10px; 
 $border: solid gray 2px;
-$card-width: 200px;
+$card-width: 250px;
+$border-color: #dadada;
 
 header {
   color: white;
@@ -12,7 +13,7 @@ section.burgers {
   padding: $padding;
 
   md-card {
-	width: 300px;
+	width: $card-width;
 
 	md-card-content{
 	  cursor: pointer;
@@ -23,17 +24,17 @@ section.burgers {
 	}
   }
 
-  .favourites {
-	//width: 100%;
+  .favorites {
 
 	md-card {
-	  width: $card-width / 2;
+	  width: $card-width * .7;
 	}
   }
 }
 
 .order-status {
-  //padding: $padding;
+  padding: $padding;
+  border-left: 2px solid $border-color; 
   min-width: 500px;
 
   h3 {
