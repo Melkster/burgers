@@ -92,9 +92,12 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
           
 	})
 	  .then(function(answer) {
+		console.log("hejsan")
 		$scope.status = 'You said the information was "' + answer + '".';
+		console.log($scope.status);
 	  }, function() {
 		$scope.status = 'You cancelled the dialog.';
+		console.log($scope.status);
 	  });
   };
 });

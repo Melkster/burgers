@@ -31,7 +31,7 @@ section.burgers {
   .favorites {
 
 	md-card {
-	  width: $card-width * .7;
+	  width: $card-width;
 	}
   }
 }
@@ -71,4 +71,12 @@ section.burgers {
   }
 }
 
+#kitchen {
+  font-size: 20px;
+  padding: $padding;
 
+  .order-kitchen {
+  font-size: 500%;
+	margin-bottom: 20px;
+  }
+}
