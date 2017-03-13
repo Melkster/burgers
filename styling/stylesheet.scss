@@ -1,7 +1,7 @@
 $padding: 10px; 
 $border: solid gray 2px;
 $card-width: 250px;
-$border-color: #dadada;
+//$border-color: #dadada;
 
 header {
   color: white;
@@ -38,7 +38,7 @@ section.burgers {
 
 .order-status {
   padding: $padding;
-  border-left: 2px solid $border-color; 
+  //border-left: 2px solid $border-color; 
   min-width: 500px;
 
   h3 {
