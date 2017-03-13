@@ -53,59 +53,6 @@ var burgers = [
         "price": 57
     },
     {
-        "name": "Original Burger (no onion)",
-        "calories": 675,
-        "gluten": true,
-        "lactose": true,
-        "image": "images/burgers/burger1.png",
-        "ingredients": [
-            "bread",
-            "beef",
-            "lettuce",
-            "ketchup",
-            "bacon",
-            "cheese",
-            "pickles",
-            "tomato"
-        ],
-        "price": 57
-    },
-    {
-        "name": "Original Burger (no ketckup)",
-        "calories": 675,
-        "gluten": true,
-        "lactose": true,
-        "image": "images/burgers/burger1.png",
-        "ingredients": [
-            "bread",
-            "beef",
-            "lettuce",
-            "bacon",
-            "cheese",
-            "pickles",
-            "onion",
-            "tomato"
-        ],
-        "price": 57
-    },
-    {
-        "name": "Original Burger (no onion, no ketchup)",
-        "calories": 650,
-        "gluten": true,
-        "lactose": true,
-        "image": "images/burgers/burger1.png",
-        "ingredients": [
-            "bread",
-            "beef",
-            "lettuce",
-            "bacon",
-            "cheese",
-            "pickles",
-            "tomato"
-        ],
-        "price": 57
-    },
-    {
         "name": "Nachotallrik",
         "calories": 800,
         "gluten": true,
@@ -232,5 +179,4 @@ var favorites = [
         ],
         "price": 57
     }
-
 ]

@@ -6,7 +6,7 @@
 	  <h4>Favorites</h4>
 	  <md-content class="favorites" layout="row" layout-wrap>
 		<md-card ng-repeat="burger in favorites">
-		  <md-card-content>
+		  <md-card-content ng-click="addItem(burger, [])">
 			{{burger.name}}
 			<img ng-src={{burger.image}} class="md-card-image" alt="Washed Out">
 		  </md-card-content>
