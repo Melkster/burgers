@@ -162,7 +162,7 @@ var favorites = [
         "price": 57
     },
     {
-        "name": "Original Burger (no onion)",
+        "name": "Original Burger (no cheese)",
         "calories": 675,
         "gluten": true,
         "lactose": true,
