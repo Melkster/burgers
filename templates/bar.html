@@ -21,18 +21,26 @@
 			<span class="md-subheader"> {{burger.price}} kr</span>
 			<img ng-src={{burger.image}} class="md-card-image" alt="Washed Out">
 		  </md-card-content>
-		  <md-card-footer>
 
-			<!--<md-button class="md-raised" ng-click="showAdvanced($event, burger)">customize</md-button>-->
-			<span ng-show="showCustomize == true">
+		  <md-card-footer ng-show = "showCustomize == false">
+			<md-button class="md-raised" ng-click="showCustomize = true">customize</md-button>
+		  </md-card-footer>
+
+		  <!--<md-button class="md-raised" ng-click="showAdvanced($event, burger)">customize</md-button>-->
+		  <md-card-content ng-show="showCustomize == true">
+			<form>
 			  <md-list>
 				<md-list-item ng-repeat="i in burger.ingredients">
-				  {{i}}
+				  <md-checkbox></md-checkbox>
+				  <p>{{i}}</p>
 				</md-list-item>
 			  </md-list>
-			</span>
+			</form>
+		  </md-card-content>
 
-			<md-button class="md-raised" ng-click="showCustomize = true">customize</md-button>
+		  <md-card-footer ng-show="showCustomize == true" layout="row">
+			<md-button class="md-raised" ng-click="showCustomize = false" ng-show="showCustomize">close</md-button>
+			<md-button class="md-raised md-primary" ng-click="showCustomize = false" ng-show="showCustomize">add</md-button>
 		  </md-card-footer>
 		</md-card>
 	  </md-content>
