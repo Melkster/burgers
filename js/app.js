@@ -21,11 +21,13 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   $scope.favorites = favorites;
   $scope.order = [];
   $scope.zoneChosen = '-';
+  $scope.zoneChosenBool = false;
   $scope.ingredients = ["bacon", "lettuce", "bread", "onion", "ketchup", "bbq-sauce", "cheese"];
   $scope.showCustomize = false;
 
   $scope.setZone = function(zone) {
-	$scope.zoneChosen = zone;
+      $scope.zoneChosen = zone;
+      $scope.zoneChosenBool = false;
   };
 
   $scope.addItem = function(item, customs) {
@@ -66,16 +68,20 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   }
 
   $scope.submitOrder = function() {
-	if ($scope.order.length != 0){
-	  console.log($scope.order);
+      if ($scope.order.length != 0 && Number.isInteger($scope.zoneChosen)){
 	  orderService.addOrder($scope.order);
 	  $scope.clearOrder();
-	}
+          $scope.zoneChosenBool = false;
+      } else if (!Number.isInteger($scope.zoneChosen)) {
+          
+          $scope.zoneChosenBool = true;
+      }
   }
 
   $scope.clearOrder = function() {
       $scope.order = [];
       $scope.zoneChosen = '-';
+      $scope.zoneChosenBool = false;
   }
 
   $scope.addCustom = function(ev) {
