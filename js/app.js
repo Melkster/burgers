@@ -112,6 +112,26 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 		console.log($scope.status);
 	  });
   };
+
+  $scope.addCustom = function() {
+	console.log($scope.selectedCustom);
+  }
+
+  $scope.selectedCustom = [];
+
+  $scope.toggleCustom = function (item, list) {
+	var idx = list.indexOf(item);
+	if (idx > -1) {
+	  list.splice(idx, 1);
+	}
+	else {
+	  list.push(item);
+	}
+  };
+
+  $scope.customExists = function (item, list) {
+	return list.indexOf(item) > -1;
+  };
 });
 
 app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
