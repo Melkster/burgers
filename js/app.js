@@ -23,6 +23,7 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   $scope.zoneChosen = '-';
   $scope.zoneChosenBool = false;
   $scope.ingredients = ["bacon", "lettuce", "bread", "onion", "ketchup", "bbq-sauce", "cheese"];
+  $scope.showCustomize = false;
 
   $scope.setZone = function(zone) {
       $scope.zoneChosen = zone;
