@@ -163,7 +163,15 @@ app.service('orderService', function() {
   var orders = [];
 
   var addOrder = function(order) {
-	orders.push(order);
+      for (var i = 0; i < orders.length; i++) {
+          if (orders[i].zone == order.zone) {
+              for (var j = 0; j < order.orders.length; j++) {
+                  orders[i].orders.push(order.orders[j]);
+              }
+              return;
+          }
+      }
+      orders.push(order);
   }
   
   var getOrder = function() {
