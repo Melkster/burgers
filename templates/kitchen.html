@@ -7,9 +7,9 @@
 	  <md-card-content ng-click="addItem(burger, [])">
 		<md-list class="md-dense" flex>
 		  <div ng-repeat="meal in order.orders">
-			<md-list-item class="secondary-button-padding md-body-3" ng-repeat="i in range(meal.amount)" ng-click="removeMeal(meal)" layout="row" layout-align="space-between none">
-			    <div>{{meal.item.name}}</div>
-                            <div>{{getTime(meal)}}</div>
+			<md-list-item ng-repeat="i in range(meal.amount)" ng-click="removeMeal(meal)">
+			  <p>{{meal.item.name}}</p>
+			  <div class="md-secondary">{{getTime(meal)}}</div>
 			</md-list-item>
 		  </div>
 		</md-list>
