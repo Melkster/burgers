@@ -30,8 +30,8 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   };
 
   $scope.addItem = function(item, customs) {
-	var itemInOrder = $scope.itemExists($scope.order, item);
-	var newItem = {
+      var itemInOrder = $scope.itemExists($scope.order, item);
+      var newItem = {
 	  'item': item,
 	  'amount': 1,
 	  'customs': customs
@@ -68,7 +68,10 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 
   $scope.submitOrder = function() {
       if ($scope.order.length != 0 && Number.isInteger($scope.zoneChosen)){
-	  orderService.addOrder($scope.order);
+	  orderService.addOrder({
+              'orders': $scope.order,
+              'zone': $scope.zoneChosen
+          });
 	  $scope.clearOrder();
           $scope.zoneChosenBool = false;
       } else if (!Number.isInteger($scope.zoneChosen)) {
@@ -111,7 +114,7 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 
 app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
     $scope.orders = orderService.getOrder();
-
+    console.log($scope.orders);
     $scope.removeMeal = function(meal) {
         meal.amount--;
         for (var i = 0; i < $scope.orders.length; i++) {

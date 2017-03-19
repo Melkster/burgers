@@ -5,9 +5,9 @@
 	<md-card class="order-kitchen" ng-repeat="order in orders">
 	  <md-card-content ng-click="addItem(burger, [])">
 		<md-list class="md-dense" flex>
-		  <div ng-repeat="meal in order">
+		  <div ng-repeat="meal in order.orders">
 			<md-list-item class="secondary-button-padding md-body-3" ng-repeat="i in range(meal.amount)" ng-click="removeMeal(meal)" >
-			  {{meal.item.name}}
+			    {{meal.item.name}}
 			</md-list-item>
 		  </div>
 		</md-list>
