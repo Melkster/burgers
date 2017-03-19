@@ -23,7 +23,6 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   $scope.zoneChosen = '-';
   $scope.zoneChosenBool = false;
   $scope.ingredients = ["bacon", "lettuce", "bread", "onion", "ketchup", "bbq-sauce", "cheese"];
-  $scope.showCustomize = false;
 
   $scope.setZone = function(zone) {
       $scope.zoneChosen = zone;
@@ -35,7 +34,8 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
       var newItem = {
 	  'item': item,
 	  'amount': 1,
-	  'customs': customs
+	  'customs': customs,
+          'time': new Date()
 	}
 
 	if (itemInOrder === null) $scope.order.push(newItem);
@@ -111,10 +111,6 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 		console.log($scope.status);
 	  });
   };
-
-  //$scope.toggleCustomize = function() {
-	//$scope.showCustomize = !$scope.showCustomize;
-  //}
 });
 
 app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
@@ -123,7 +119,7 @@ app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
     $scope.removeMeal = function(meal) {
         meal.amount--;
         for (var i = 0; i < $scope.orders.length; i++) {
-            var order = $scope.orders[i];
+            var order = $scope.orders[i].orders;
             
             if ($scope.orderEmpty(order)) {
                 $scope.orders.splice(i, 1);
@@ -153,6 +149,12 @@ app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
 
     $scope.noOrders = function() {
         return $scope.orders.length == 0;
+    }
+
+    $scope.getTime = function(meal) {
+        return meal.time.getHours() + ":" + meal.time.getMinutes();
+        
+        
     }
 });
 
