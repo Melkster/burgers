@@ -30,10 +30,29 @@ section.burgers {
 
   .favorites {
 
-	md-card {
-	  width: $card-width;
+
+  }
+  .drinks {
+        md-headline {
+          font-size: 20%;        
+  }
+  
+  md-card {
+	width: 100px;
+
+	md-card-content{
+	  cursor: pointer;
+	}
+
+	img {
+	  max-width: 100%;
+	}
+
+	md-card-footer {
+	  padding-top: 0;
 	}
   }
+} 
 
 }
 

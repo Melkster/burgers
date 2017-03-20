@@ -1,0 +1,98 @@
+var drinks = [
+    {
+        "name": "Norrlands Guld",
+        "alcohol": true,
+        "image": "images/burgers/bacon.png",
+        "price": 32
+    },
+    {
+        "name": "Åbro",
+        "alcohol": true,
+        "image":"images/burgers/bacon.png",
+        "price": 34
+    },
+    {
+        "name": "Pripps Blå",
+        "alcohol": true,
+        "image":"images/burgers/bacon.png",
+        "price": 30
+    },
+    {
+        "name": "Sommersby Pear",
+        "alcohol": true,
+        "image":"images/burgers/bacon.png",
+        "price": 32
+    },
+    {
+        "name": "Guinness",
+        "alcohol": true,
+        "image":"images/burgers/bacon.png",
+        "price": 42
+    },
+    {
+        "name": "Staropramen",
+        "alcohol": true,
+        "image":"images/burgers/bacon.png",
+        "price": 39
+    },
+    {
+        "name": "Brooklyn lager",
+        "alcohol": true,
+        "image":"images/burgers/bacon.png",
+        "price": 42
+    },
+    {
+        "name": "Coca Cola",
+        "alcohol": false,
+        "image":"images/burgers/bacon.png",
+        "price": 20
+    },
+    {
+        "name": "Fanta",
+        "alcohol": false,
+        "image":"images/burgers/bacon.png",
+        "price": 20
+    },
+    {
+        "name": "Sprite",
+        "alcohol": false,
+        "image":"images/burgers/bacon.png",
+        "price": 20
+    },
+    {
+        "name": "Ramlösa",
+        "alcohol": false,
+        "image":"images/burgers/bacon.png",
+        "price": 20
+    },
+    {
+        "name": "Juice",
+        "alcohol": false,
+        "image":"images/burgers/bacon.png",
+        "price": 22
+    },
+    {
+        "name": "Red wine",
+        "alcohol": true,
+        "image":"images/burgers/bacon.png",
+        "price": 36
+    },
+    {
+        "name": "White wine",
+        "alcohol": true,
+        "image":"images/burgers/bacon.png",
+        "price": 36
+    },
+    {
+        "name": "Rose wine",
+        "alcohol": true,
+        "image":"images/burgers/bacon.png",
+        "price": 38
+    },
+    {
+        "name": "Shot",
+        "alcohol": true,
+        "image":"images/burgers/bacon.png",
+        "price": 52
+    }
+]
