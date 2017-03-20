@@ -24,6 +24,9 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   $scope.zoneChosenBool = false;
   $scope.ingredients = ["bacon", "lettuce", "bread", "onion", "ketchup", "bbq-sauce", "cheese"];
   $scope.showCustomize = false;
+  $scope.selectedCustom = [];
+  $scope.burger = {};
+  $scope.burger.customs = [];
 
   $scope.setZone = function(zone) {
       $scope.zoneChosen = zone;
@@ -31,6 +34,8 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   };
 
   $scope.addItem = function(item, customs) {
+	console.log(item);
+	console.log(customs);
       var itemInOrder = $scope.itemExists($scope.order, item);
       var newItem = {
 	  'item': item,
@@ -88,10 +93,6 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
       $scope.zoneChosenBool = false;
   }
 
-  $scope.addCustom = function(ev) {
-        
-  }
-
   $scope.showAdvanced = function(ev, burger) {
 	console.log("hej");
 	$mdDialog.show({
@@ -113,11 +114,14 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 	  });
   };
 
-  $scope.addCustom = function() {
-	console.log($scope.selectedCustom);
+  $scope.addCustom = function(item, removed) {
+	var customs = {
+	  'removed': removed,
+	  'comment': item.comment
+	}
+	item.customs = [];
+	$scope.addItem(item, customs);
   }
-
-  $scope.selectedCustom = [];
 
   $scope.toggleCustom = function (item, list) {
 	var idx = list.indexOf(item);
@@ -130,7 +134,11 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   };
 
   $scope.customExists = function (item, list) {
-	return list.indexOf(item) > -1;
+	try {
+	  return list.indexOf(item) > -1;
+	} catch(err) {
+	  return false;
+	}
   };
 });
 
