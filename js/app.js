@@ -25,6 +25,7 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   $scope.zoneChosenBool = false;
   $scope.ingredients = ["bacon", "lettuce", "bread", "onion", "ketchup", "bbq-sauce", "cheese"];
   $scope.showCustomize = false;
+  $scope.noCustoms = {'removed': [], 'comment': ""};
 
   $scope.setZone = function(zone) {
       $scope.zoneChosen = zone;
@@ -89,10 +90,6 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
       $scope.zoneChosenBool = false;
   }
 
-  $scope.addCustom = function(ev) {
-        
-  }
-
   $scope.showAdvanced = function(ev, burger) {
 	console.log("hej");
 	$mdDialog.show({
@@ -114,14 +111,18 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 	  });
   };
 
-  $scope.addCustom = function() {
-	console.log($scope.selectedCustom);
+  $scope.addCustom = function(item, removed) {
+	var customs = {
+	  'removed': removed,
+	  'comment': item.comment
+	}
+	$scope.addItem(item, customs);
+	item.customs = [];
   }
-
-  $scope.selectedCustom = [];
 
   $scope.toggleCustom = function (item, list) {
 	var idx = list.indexOf(item);
+
 	if (idx > -1) {
 	  list.splice(idx, 1);
 	}
