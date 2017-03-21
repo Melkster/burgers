@@ -83,8 +83,11 @@
 		<md-list-item  ng-repeat="o in order">
 		  <section flex>
 			{{o.item.name}}, {{o.amount}}
-			<p ng-show="o.customs.removed.length !== 0">
+			<p ng-show="o.customs.removed.length != 0">
 			without: <text ng-repeat="r in o.customs.removed"> {{r}}, </text>
+			</p>
+			<p ng-show="o.customs.comment != undefined">
+			comment: <text> {{o.customs.comment}} </text>
 			</p>
 		  </section>
 		  <section flex layout="row" layout-align="end center">
