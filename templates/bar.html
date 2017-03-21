@@ -16,7 +16,7 @@
 	  <h4>Other</h4>
 	  <md-content layout="row" layout-wrap>
 		<md-card ng-repeat="burger in burgers" ng-init="burger.customs = []">
-		  <md-card-content ng-click="addItem(burger, [])" ng-show="showCustomize == false">
+		  <md-card-content ng-click="addItem(burger, noCustoms)" ng-show="showCustomize == false">
 			<span class="md-headline"> {{burger.name}} </span>
 			<span class="md-subheader"> {{burger.price}} kr</span>
 			<img ng-src={{burger.image}} class="md-card-image" alt="Washed Out">

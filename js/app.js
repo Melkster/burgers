@@ -25,7 +25,7 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   $scope.zoneChosenBool = false;
   $scope.ingredients = ["bacon", "lettuce", "bread", "onion", "ketchup", "bbq-sauce", "cheese"];
   $scope.showCustomize = false;
-  $scope.noCustoms = {'removed': [], 'comment': ""};
+  $scope.noCustoms = {'removed': [], 'comment': undefined};
 
   $scope.setZone = function(zone) {
       $scope.zoneChosen = zone;
@@ -43,6 +43,7 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 
 	if (itemInOrder === null) $scope.order.push(newItem);
 	else itemInOrder.amount++;
+	console.log(newItem);
   };
 
   $scope.removeItem = function(item, items) {
