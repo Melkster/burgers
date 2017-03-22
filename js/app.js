@@ -33,17 +33,17 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   };
 
   $scope.addItem = function(item, customs) {
-      var itemInOrder = $scope.itemExists($scope.order, item);
-      var newItem = {
+	var itemInOrder = $scope.itemExists($scope.order, item, customs);
+	var newItem = {
 	  'item': item,
 	  'amount': 1,
 	  'customs': customs,
-          'time': new Date()
+	  'time': new Date()
 	}
 
 	if (itemInOrder === null) $scope.order.push(newItem);
 	else itemInOrder.amount++;
-	console.log(newItem);
+	//console.log(newItem);
   };
 
   $scope.removeItem = function(item, items) {
@@ -60,8 +60,14 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 	orderItem.amount ++;
   }
 
-  $scope.itemExists = function(list, item) {
-	for (i in list) if (angular.equals(list[i].item.name, item.name)) return list[i];
+  $scope.itemExists = function(list, item, customs) {
+	for (i in list) { 
+	  if (
+		list[i].item.name == item.name &&                            // name
+		list[i].customs.comment == customs.comment &&                // comment
+		$scope.equalsArray(list[i].customs.removed, customs.removed) // removed
+	  ) return list[i];
+	}
 	return null;
   };
 
@@ -135,11 +141,25 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   $scope.customExists = function (item, list) {
 	return list.indexOf(item) > -1;
   };
+
+  $scope.equalsArray = function (a, b) {
+	if (a === b) return true;
+	if (a == null || b == null) return false;
+	if (a.length != b.length) return false;
+
+	a.sort();
+	b.sort();
+
+	for (var i = 0; i < a.length; ++i) {
+	  if (a[i] !== b[i]) return false;
+	}
+	return true;
+}
 });
 
 app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
     $scope.orders = orderService.getOrder();
-    console.log($scope.orders);
+	//console.log($scope.orders);
     $scope.removeMeal = function(meal) {
         meal.amount--;
         for (var i = 0; i < $scope.orders.length; i++) {
