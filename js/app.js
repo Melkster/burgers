@@ -160,7 +160,65 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 
 app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
   $scope.orders = orderService.getOrder();
-  //console.log($scope.orders);
+  console.log($scope.orders);
+  $scope.orders.push(
+	{
+	  orders: [
+		{
+		  amount: 1,
+		  item: {
+			name: "Burger name",
+			customs: {
+			  removed: ["cheese", "bacon"],
+			  comment: "comment"
+			},
+		  },
+		  progress: false,
+		  time: new Date()
+		},
+		{
+		  amount: 1,
+		  item: {
+			name: "Anouther burger",
+			customs: {
+			  removed: ["onion"],
+			  comment: "another comment"
+			},
+		  },
+		  progress: false,
+		  time: new Date()
+		}
+	  ],
+	  zone: 1,
+	},
+	{
+	  orders: [
+		{
+		  amount: 1,
+		  item: {
+			name: "Burger",
+			customs: {
+			},
+		  },
+		  progress: false,
+		  time: new Date()
+		},
+		{
+		  amount: 1,
+		  item: {
+			name: "Anouther burger",
+			customs: {
+			  removed: [],
+			  comment: "Comment comment"
+			},
+		  },
+		  progress: false,
+		  time: new Date()
+		}
+	  ],
+	  zone: 1,
+	}
+  )
   $scope.removeMeal = function(meal) {
 	console.log(meal.progress);
 	if (!meal.progress) {
