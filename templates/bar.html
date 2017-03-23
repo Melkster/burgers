@@ -49,18 +49,6 @@
 		</md-card>
 	  </md-content>
           
-           <h3>Choose Drinks:</h3>
-	  <h4>Drinks</h4>
-	  <md-content class="drinks" layout="row" layout-wrap>
-		<md-card ng-repeat="drink in drinks">
-		  <md-card-content ng-click="addItem(drink, [])">
-                    <span class="md-headline"> {{drink.name}} </span>
-		    <span class="md-subheader"> {{drink.price}} kr</span>
-		    <img ng-src={{drink.image}} class="md-card-image" alt="Washed Out">
-		  </md-card-content>
-		</md-card>
-	  </md-content>
-
 	  <h3>Choose zone:</h3>
 	  <md-content layout="row" layout-wrap>
 		<md-card flex ng-repeat="zone in [1,2,3,4,5,6,7,8,9]" ng-click="setZone(zone)">
@@ -82,9 +70,12 @@
 		<md-subheader class="md-no-sticky">Meals:</md-subheader>
 		<md-list-item  ng-repeat="o in order">
 		  <section flex>
-			{{o.item.name}}, {{o.amount}}
+			<b class="bold">{{o.item.name}}, {{o.amount}}</b>
 			<p ng-show="o.item.customs.removed.length != 0">
-			without: <text ng-repeat="r in o.item.customs.removed"> {{r}}, </text>
+			without: 
+			<text ng-repeat="r in o.item.customs.removed">
+			  {{r}}<span ng-show="!$last">, </span> 
+			</text>
 			</p>
 			<p ng-show="o.item.customs.comment != ''">
 			comment: <text> {{o.item.customs.comment}} </text>
