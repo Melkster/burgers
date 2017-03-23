@@ -25,7 +25,7 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   $scope.zoneChosenBool = false;
   $scope.ingredients = ["bacon", "lettuce", "bread", "onion", "ketchup", "bbq-sauce", "cheese"];
   $scope.showCustomize = false;
-  $scope.noCustoms = {'removed': [], 'comment': undefined};
+  $scope.noCustoms = {'removed': [], 'comment': ""};
 
   $scope.setZone = function(zone) {
       $scope.zoneChosen = zone;
@@ -33,12 +33,13 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   };
 
   $scope.addItem = function(item) {
+	if (item.customs == undefined || item.customs == "") item.customs = $scope.noCustoms;
 	var itemInOrder = $scope.itemExists($scope.order, item);
-	if (item.customs == undefined) item.customs = $scope.noCustoms;
-	//item.customs = customs;
+	var tempItem;
+	angular.copy(item, tempItem);
 
 	var newItem = {
-	  'item': item,
+	  'item': angular.copy(item),
 	  'amount': 1,
 	  'time': new Date(),
 	  'progress': false
@@ -46,12 +47,9 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 
 	if (itemInOrder === null) $scope.order.push(newItem);
 	else itemInOrder.amount++;
-	//console.log(newItem);
-	console.log("order: ", $scope.order);
   };
 
   $scope.removeItem = function(item, items) {
-	//console.log(items);
 	for (i in items) if (angular.equals(items[i].item, item)) {
 	  console.log(items[i].item);
 	  console.log(item);
@@ -70,7 +68,7 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   $scope.itemExists = function(list, item) {
 	for (i in list) { 
 	  if (
-		list[i].item.name == item.name &&                            // name
+		list[i].item.name == item.name &&                                      // name
 		list[i].item.customs.comment == item.customs.comment &&                // comment
 		$scope.equalsArray(list[i].item.customs.removed, item.customs.removed) // removed
 	  ) return list[i];
