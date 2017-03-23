@@ -70,9 +70,12 @@
 		<md-subheader class="md-no-sticky">Meals:</md-subheader>
 		<md-list-item  ng-repeat="o in order">
 		  <section flex>
-			{{o.item.name}}, {{o.amount}}
+			<b class="bold">{{o.item.name}}, {{o.amount}}</b>
 			<p ng-show="o.item.customs.removed.length != 0">
-			without: <text ng-repeat="r in o.item.customs.removed"> {{r}}, </text>
+			without: 
+			<text ng-repeat="r in o.item.customs.removed">
+			  {{r}}<span ng-show="!$last">, </span> 
+			</text>
 			</p>
 			<p ng-show="o.item.customs.comment != ''">
 			comment: <text> {{o.item.customs.comment}} </text>
