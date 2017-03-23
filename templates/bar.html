@@ -15,7 +15,7 @@
 
 	  <h4>Other</h4>
 	  <md-content layout="row" layout-wrap>
-		<md-card ng-repeat="burger in burgers" ng-init="burger.customs = []">
+		<md-card ng-repeat="burger in burgers" ng-init="customs.removed = ['hej']; customs.comment = undefined">
 		  <md-card-content ng-click="addItem(burger, noCustoms)" ng-show="showCustomize == false">
 			<span class="md-headline"> {{burger.name}} </span>
 			<span class="md-subheader"> {{burger.price}} kr</span>
@@ -31,20 +31,20 @@
 			<form>
 			  <md-list>
 				<md-list-item ng-repeat="i in burger.ingredients">
-				  <md-checkbox ng-checked="!customExists(i, burger.customs)" ng-click="toggleCustom(i, burger.customs)"></md-checkbox>
+				  <md-checkbox ng-checked="!customExists(i, customs.removed)" ng-click="toggleCustom(i, customs.removed)"></md-checkbox>
 				  <p>{{i}}</p>
 				</md-list-item>
 			  </md-list>
 			  <md-input-container>
 				<label>comment</label>
-				<textarea ng-model="burger.comment"></textarea>
+				<textarea ng-model="customs.comment"></textarea>
 			  </md-input-container>
 			</form>
 		  </md-card-content>
 
 		  <md-card-footer ng-show="showCustomize == true" layout="row">
 			<md-button class="md-raised" ng-click="showCustomize = false" ng-show="showCustomize">close</md-button>
-			<md-button class="md-raised md-primary" type="submit" ng-click="addCustom(burger, burger.customs)" ng-show="showCustomize">add</md-button>
+			<md-button class="md-raised md-primary" type="submit" ng-click="addCustom(burger, customs)" ng-show="showCustomize">add</md-button>
 		  </md-card-footer>
 		</md-card>
 	  </md-content>
@@ -83,11 +83,11 @@
 		<md-list-item  ng-repeat="o in order">
 		  <section flex>
 			{{o.item.name}}, {{o.amount}}
-			<p ng-show="o.customs.removed.length != 0">
-			without: <text ng-repeat="r in o.customs.removed"> {{r}}, </text>
+			<p ng-show="o.item.customs.removed.length != 0">
+			without: <text ng-repeat="r in o.item.customs.removed"> {{r}}, </text>
 			</p>
-			<p ng-show="o.customs.comment != undefined">
-			comment: <text> {{o.customs.comment}} </text>
+			<p ng-show="o.item.customs.comment != undefined">
+			comment: <text> {{o.item.customs.comment}} </text>
 			</p>
 		  </section>
 		  <section flex layout="row" layout-align="end center">

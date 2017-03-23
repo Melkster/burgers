@@ -32,22 +32,29 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
       $scope.zoneChosenBool = false;
   };
 
-  $scope.addItem = function(item, customs) {
-	var itemInOrder = $scope.itemExists($scope.order, item, customs);
+  $scope.addItem = function(item) {
+	var itemInOrder = $scope.itemExists($scope.order, item);
+	if (item.customs == undefined) item.customs = $scope.noCustoms;
+	//item.customs = customs;
+
 	var newItem = {
 	  'item': item,
 	  'amount': 1,
-	  'customs': customs,
+	  //'customs': customs,
 	  'time': new Date()
 	}
 
 	if (itemInOrder === null) $scope.order.push(newItem);
 	else itemInOrder.amount++;
 	//console.log(newItem);
+	console.log("order: ", $scope.order);
   };
 
   $scope.removeItem = function(item, items) {
+	//console.log(items);
 	for (i in items) if (angular.equals(items[i].item, item)) {
+	  console.log(items[i].item);
+	  console.log(item);
 	  if (items[i].amount > 1) items[i].amount--;
 	  else {
 		items.splice(i, 1);
@@ -60,12 +67,12 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 	orderItem.amount ++;
   }
 
-  $scope.itemExists = function(list, item, customs) {
+  $scope.itemExists = function(list, item) {
 	for (i in list) { 
 	  if (
 		list[i].item.name == item.name &&                            // name
-		list[i].customs.comment == customs.comment &&                // comment
-		$scope.equalsArray(list[i].customs.removed, customs.removed) // removed
+		list[i].item.customs.comment == item.customs.comment &&                // comment
+		$scope.equalsArray(list[i].item.customs.removed, item.customs.removed) // removed
 	  ) return list[i];
 	}
 	return null;
@@ -118,16 +125,19 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 	  });
   };
 
-  $scope.addCustom = function(item, removed) {
-	var customs = {
-	  'removed': removed,
-	  'comment': item.comment
-	}
-	$scope.addItem(item, customs);
-	item.customs = [];
+  $scope.addCustom = function(item, customs) {
+	//var customs = {
+	  //'removed': removed,
+	  //'comment': item.comment
+	//}
+	//$scope.addItem(item, customs);
+	item.customs = customs;
+	$scope.addItem(item);
+	//item.customs = [];
   }
 
   $scope.toggleCustom = function (item, list) {
+	console.log(list);
 	var idx = list.indexOf(item);
 
 	if (idx > -1) {
@@ -139,6 +149,7 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   };
 
   $scope.customExists = function (item, list) {
+	if (list.length == 0) return false;
 	return list.indexOf(item) > -1;
   };
 
@@ -209,8 +220,8 @@ app.service('orderService', function() {
   var addOrder = function(order) {
       for (var i = 0; i < orders.length; i++) {
           if (orders[i].zone == order.zone) {
-              for (var j = 0; j < order.orders.length; j++) {
-                  orders[i].orders.push(order.orders[j]);
+			for (var j = 0; j < order.orders.length; j++) {
+			  orders[i].orders.push(order.orders[j]);
               }
               return;
           }
