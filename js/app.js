@@ -19,7 +19,6 @@ app.config(['$routeProvider',
 app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   $scope.burgers = burgers;
   $scope.favorites = favorites;
-  $scope.drinks = drinks;
   $scope.order = [];
   $scope.zoneChosen = '-';
   $scope.zoneChosenBool = false;
