@@ -43,8 +43,8 @@
 		  </md-card-content>
 
 		  <md-card-footer ng-show="showCustomize == true" layout="row">
-			<md-button class="md-raised" ng-click="showCustomize = false" ng-show="showCustomize">close</md-button>
-			<md-button class="md-raised md-primary" type="submit" ng-click="addCustom(burger, customs)" ng-show="showCustomize">add</md-button>
+			<md-button class="md-raised" ng-click="showCustomize = false; customs = noCustoms" ng-show="showCustomize">close</md-button>
+			<md-button class="md-raised md-primary" type="submit" ng-click="addCustom(burger, customs); customs = noCustoms" ng-show="showCustomize">add</md-button>
 		  </md-card-footer>
 		</md-card>
 	  </md-content>
