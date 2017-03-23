@@ -13,7 +13,7 @@ app.config(['$routeProvider',
 	  })
 	  .otherwise ({
 		redirectTo :'/bar'
-	});
+	  });
   }]);
 
 app.controller('bar-controller', function($scope, $mdDialog, orderService) {
@@ -28,8 +28,8 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   $scope.noCustoms = {'removed': [], 'comment': ""};
 
   $scope.setZone = function(zone) {
-      $scope.zoneChosen = zone;
-      $scope.zoneChosenBool = false;
+	$scope.zoneChosen = zone;
+	$scope.zoneChosenBool = false;
   };
 
   $scope.addItem = function(item) {
@@ -83,23 +83,23 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   }
 
   $scope.submitOrder = function() {
-      if ($scope.order.length != 0 && Number.isInteger($scope.zoneChosen)){
+	if ($scope.order.length != 0 && Number.isInteger($scope.zoneChosen)){
 	  orderService.addOrder({
-              'orders': $scope.order,
-              'zone': $scope.zoneChosen
-          });
+		'orders': $scope.order,
+		'zone': $scope.zoneChosen
+	  });
 	  $scope.clearOrder();
-          $scope.zoneChosenBool = false;
-      } else if (!Number.isInteger($scope.zoneChosen)) {
-          
-          $scope.zoneChosenBool = true;
-      }
+	  $scope.zoneChosenBool = false;
+	} else if (!Number.isInteger($scope.zoneChosen)) {
+
+	  $scope.zoneChosenBool = true;
+	}
   }
 
   $scope.clearOrder = function() {
-      $scope.order = [];
-      $scope.zoneChosen = '-';
-      $scope.zoneChosenBool = false;
+	$scope.order = [];
+	$scope.zoneChosen = '-';
+	$scope.zoneChosenBool = false;
   }
 
   $scope.showAdvanced = function(ev, burger) {
@@ -111,7 +111,7 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 	  targetEvent: ev,
 	  clickOutsideToClose:true,
 	  fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-          
+
 	})
 	  .then(function(answer) {
 		console.log("hejsan")
@@ -124,18 +124,11 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   };
 
   $scope.addCustom = function(item, customs) {
-	//var customs = {
-	  //'removed': removed,
-	  //'comment': item.comment
-	//}
-	//$scope.addItem(item, customs);
 	item.customs = customs;
 	$scope.addItem(item);
-	//item.customs = [];
   }
 
   $scope.toggleCustom = function (item, list) {
-	console.log(list);
 	var idx = list.indexOf(item);
 
 	if (idx > -1) {
@@ -163,102 +156,97 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 	  if (a[i] !== b[i]) return false;
 	}
 	return true;
-}
+  }
 });
 
 app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
-    $scope.orders = orderService.getOrder();
-	//console.log($scope.orders);
-    $scope.removeMeal = function(meal) {
-        console.log(meal.progress);
-        if (!meal.progress) {
-            meal.progress = true;
-        } else {
-            meal.amount--;
-            for (var i = 0; i < $scope.orders.length; i++) {
-                var order = $scope.orders[i].orders;
-                
-                if ($scope.orderEmpty(order)) {
-                    $scope.orders.splice(i, 1);
-                }
-            }
-        }
-    }
+  $scope.orders = orderService.getOrder();
+  //console.log($scope.orders);
+  $scope.removeMeal = function(meal) {
+	console.log(meal.progress);
+	if (!meal.progress) {
+	  meal.progress = true;
+	} else {
+	  meal.amount--;
+	  for (var i = 0; i < $scope.orders.length; i++) {
+		var order = $scope.orders[i].orders;
 
-    $scope.orderEmpty = function(order) {
-        
-        for (var i = 0; i < order.length; i++) {
-            var meal = order[i];
-            
-            if (meal.amount != 0) return false;
-        }
-        return true;
-    }
+		if ($scope.orderEmpty(order)) {
+		  $scope.orders.splice(i, 1);
+		}
+	  }
+	}
+  }
 
-    $scope.range = function(n) {
-        var array = []
-        for (var i = 1; i <= n; i++) {
-            array.push(i);
-        }
-        
-        return array;
-    }
+  $scope.orderEmpty = function(order) {
+	for (var i = 0; i < order.length; i++) {
+	  var meal = order[i];
 
-    $scope.noOrders = function() {
-        return $scope.orders.length == 0;
-    }
+	  if (meal.amount != 0) return false;
+	}
+	return true;
+  }
 
-    $scope.getTime = function(meal) {
-        return ('0' + meal.time.getHours()).slice(-2) + ':' +
-            ('0' + meal.time.getMinutes()).slice(-2);
-        
-        
-    }
+  $scope.range = function(n) {
+	var array = []
+	for (var i = 1; i <= n; i++) {
+	  array.push(i);
+	}
+
+	return array;
+  }
+
+  $scope.noOrders = function() {
+	return $scope.orders.length == 0;
+  }
+
+  $scope.getTime = function(meal) {
+	return ('0' + meal.time.getHours()).slice(-2) + ':' +
+	  ('0' + meal.time.getMinutes()).slice(-2);
+  }
 });
 
 app.service('orderService', function() {
-    var orders = [];
-    
-    var addOrder = function(order) {
-        order.orders = flatten(order.orders);
-        
-        for (var i = 0; i < orders.length; i++) {
-            if (orders[i].zone == order.zone) {
-                for (var j = 0; j < order.orders.length; j++) {
-                    orders[i].orders.push(order.orders[j]);
-                }
-                return;
-            }
-        }
-        orders.push(order);
-    }
-    
-    var getOrder = function() {
+  var orders = [];
+
+  var addOrder = function(order) {
+	order.orders = flatten(order.orders);
+
+	for (var i = 0; i < orders.length; i++) {
+	  if (orders[i].zone == order.zone) {
+		for (var j = 0; j < order.orders.length; j++) {
+		  orders[i].orders.push(order.orders[j]);
+		}
+		return;
+	  }
+	}
+	orders.push(order);
+  }
+
+  var getOrder = function() {
 	return orders;
-    }
+  }
 
-    var flatten = function(orders) {
-        var new_orders = [];
-        for (var i = 0; i < orders.length; i++) {
-            for (var j = 0; j < orders[i].amount; j++) {
-                new_orders.push({'item': orders[i].item,
-                                 'amount': 1,
-                                 'customs': orders[i].customs,
-                                 'time': orders[i].time,
-                                 'progress': false});
-            }
-        }
-        console.log(new_orders);
-        return new_orders;
-        
-    }
+  var flatten = function(orders) {
+	var new_orders = [];
+	for (var i = 0; i < orders.length; i++) {
+	  for (var j = 0; j < orders[i].amount; j++) {
+		new_orders.push({'item': orders[i].item,
+		  'amount': 1,
+		  'time': orders[i].time,
+		  'progress': false});
+	  }
+	}
+	console.log(new_orders);
+	return new_orders;
+  }
 
-    return { // make sure to return all public functions
-        addOrder: addOrder,
-        getOrder: getOrder
-    };
+  return { // make sure to return all public functions
+	addOrder: addOrder,
+	getOrder: getOrder
+  };
 });
 
 //app.controller('customize-controller', function($scope) {
- // $scope.ingredients = ["bacon", "lettuce", "bread", "onion", "ketchup", "bbq-sauce", "cheese"];
+// $scope.ingredients = ["bacon", "lettuce", "bread", "onion", "ketchup", "bbq-sauce", "cheese"];
 //});
