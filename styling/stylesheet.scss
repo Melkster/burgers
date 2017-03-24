@@ -107,6 +107,15 @@ section.burgers {
   font-size: 500%;
 	margin-bottom: 20px;
   }
+
+  .green {
+	border: 3px solid green;
+  }
+
+  md-list-item {
+	margin-bottom: 5px;
+  }
+
 }
 
 .red {
@@ -114,7 +123,7 @@ section.burgers {
 }
 
 .yellow {
-     background-color: yellow;
+  border: 3px solid white;
 }
 
 .meal {
