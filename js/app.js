@@ -109,6 +109,7 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 	item.customs = customs;
 	$scope.addItem(item);
 	item.customs.removed = [];
+	item.customs.comment = "";
   }
 
   $scope.toggleCustom = function (item, list) {
