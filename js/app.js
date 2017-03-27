@@ -1,3 +1,4 @@
+var socket = io();
 var app = angular.module('app', ['ngMaterial', 'ngRoute']);
 
 app.config(['$routeProvider',
@@ -32,6 +33,7 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   };
 
   $scope.addItem = function(item) {
+	//console.log(item);
 	if (item.customs == undefined || item.customs == "") item.customs = $scope.noCustoms;
 	else if (item.customs.comment == undefined) item.customs.comment = "";
 	var itemInOrder = $scope.itemExists($scope.order, item);
@@ -41,7 +43,7 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 	var newItem = {
 	  'item': angular.copy(item),
 	  'amount': 1,
-	  'time': new Date(),
+	  'time': $scope.getTime(new Date()),
 	  'progress': false
 	}
 
@@ -49,10 +51,19 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 	else itemInOrder.amount++;
   };
 
+  $scope.getTime = function(date) {
+	//console.log(meal);
+	//var time = dojo.date.stamp.fromIOString(meal.time);
+	//console.log(time);
+	var temp = ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2);
+	console.log(temp);
+	return temp;
+  }
+
   $scope.removeItem = function(item, items) {
 	for (i in items) if (angular.equals(items[i].item, item)) {
-	  console.log(items[i].item);
-	  console.log(item);
+	  //console.log(items[i].item);
+	  //console.log(item);
 	  if (items[i].amount > 1) items[i].amount--;
 	  else {
 		items.splice(i, 1);
@@ -83,8 +94,9 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   }
 
   $scope.submitOrder = function() {
+	  console.log($scope.order);
 	if ($scope.order.length != 0 && Number.isInteger($scope.zoneChosen)){
-	  orderService.addOrder({
+	  socket.emit("order", {
 		'orders': $scope.order,
 		'zone': $scope.zoneChosen
 	  });
@@ -162,7 +174,7 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 
 app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
   $scope.orders = orderService.getOrder();
-  console.log($scope.orders);
+  //console.log($scope.orders);
   $scope.orders.push(
 	{
 	  orders: [
@@ -176,7 +188,7 @@ app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
 			},
 		  },
 		  progress: false,
-		  time: new Date()
+		  time: "20:15"
 		},
 		{
 		  amount: 1,
@@ -188,7 +200,7 @@ app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
 			},
 		  },
 		  progress: false,
-		  time: new Date()
+		  time: "20:20"
 		}
 	  ],
 	  zone: 1,
@@ -203,7 +215,7 @@ app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
 			},
 		  },
 		  progress: false,
-		  time: new Date()
+		  time: "20:15"
 		},
 		{
 		  amount: 1,
@@ -215,14 +227,17 @@ app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
 			},
 		  },
 		  progress: false,
-		  time: new Date()
+		  time: "20:31"
 		}
 	  ],
 	  zone: 1,
 	}
   )
+
+  //console.log($scope.orders);
+
   $scope.removeMeal = function(meal) {
-	console.log(meal.progress);
+	//console.log(meal.progress);
 	if (!meal.progress) {
 	  meal.progress = true;
 	} else {
@@ -259,51 +274,50 @@ app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
 	return $scope.orders.length == 0;
   }
 
-  $scope.getTime = function(meal) {
-	return ('0' + meal.time.getHours()).slice(-2) + ':' +
-	  ('0' + meal.time.getMinutes()).slice(-2);
-  }
+  socket.on("newOrder", function(o) {
+	console.log("newOrder:", o);
+	orderService.addOrder(o);
+	$scope.$apply();
+  })
 });
 
 app.service('orderService', function() {
-  var orders = [];
+  this.orderData = {orders:[]};
 
-  var addOrder = function(order) {
+  this.addOrder = function(order) {
+	//console.log(order);
 	order.orders = flatten(order.orders);
 
-	for (var i = 0; i < orders.length; i++) {
-	  if (orders[i].zone == order.zone) {
+	for (var i = 0; i < this.orderData.orders.length; i++) {
+	  if (this.orderData.orders[i].zone == order.zone) {
 		for (var j = 0; j < order.orders.length; j++) {
-		  orders[i].orders.push(order.orders[j]);
+		  this.orderData.orders[i].push(order.orders[j]);
 		}
 		return;
 	  }
 	}
-	orders.push(order);
+	this.orderData.orders.push(order);
   }
 
-  var getOrder = function() {
-	return orders;
+  this.getOrder = function() {
+	return this.orderData.orders;
   }
 
   var flatten = function(orders) {
 	var new_orders = [];
 	for (var i = 0; i < orders.length; i++) {
 	  for (var j = 0; j < orders[i].amount; j++) {
+		//console.log(orders[i]);
 		new_orders.push({'item': orders[i].item,
 		  'amount': 1,
 		  'time': orders[i].time,
 		  'progress': false});
 	  }
 	}
-	console.log(new_orders);
+	//console.log(new_orders);
 	return new_orders;
   }
 
-  return { // make sure to return all public functions
-	addOrder: addOrder,
-	getOrder: getOrder
-  };
 });
 
 //app.controller('customize-controller', function($scope) {
