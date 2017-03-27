@@ -33,6 +33,7 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 
   $scope.addItem = function(item) {
 	if (item.customs == undefined || item.customs == "") item.customs = $scope.noCustoms;
+	else if (item.customs.comment == undefined) item.customs.comment = "";
 	var itemInOrder = $scope.itemExists($scope.order, item);
 	var tempItem;
 	angular.copy(item, tempItem);
@@ -125,6 +126,7 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   $scope.addCustom = function(item, customs) {
 	item.customs = customs;
 	$scope.addItem(item);
+	item.customs.removed = [];
   }
 
   $scope.toggleCustom = function (item, list) {

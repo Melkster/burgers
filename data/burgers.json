@@ -125,7 +125,7 @@ var favorites = [
         "price": 85
     },
     {
-        "name": "Original Burger (no onion)",
+        "name": "Original Burger",
         "calories": 675,
         "gluten": true,
         "lactose": true,
@@ -140,7 +140,10 @@ var favorites = [
             "pickles",
             "tomato"
         ],
-        "price": 57
+        "price": 57,
+		"customs": {
+		  "removed": ["onion"]
+		}
     },    
     {
         "name": "Original Burger",
@@ -162,7 +165,7 @@ var favorites = [
         "price": 57
     },
     {
-        "name": "Original Burger (no cheese)",
+        "name": "Original Burger",
         "calories": 675,
         "gluten": true,
         "lactose": true,
@@ -177,6 +180,10 @@ var favorites = [
             "pickles",
             "tomato"
         ],
-        "price": 57
+        "price": 57,
+		"customs": {
+		  "removed": ["cheese"]
+		}
+
     }
 ]

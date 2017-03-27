@@ -7,7 +7,13 @@
 	  <md-content class="favorites" layout="row" layout-wrap>
 		<md-card ng-repeat="burger in favorites">
 		  <md-card-content ng-click="addItem(burger)">
+			<p>
 			{{burger.name}}
+			<span ng-show="burger.customs.removed != '' && burger.customs.removed != undefined">
+			  (no
+			  <span ng-repeat="b in burger.customs.removed">{{b}}</span>) <!--note the ')'-->
+			</span>
+			</p>
 			<img ng-src={{burger.image}} class="md-card-image" alt="Washed Out">
 		  </md-card-content>
 		</md-card>
@@ -77,13 +83,13 @@
 			  {{r}}<span ng-show="!$last">, </span> 
 			</text>
 			</p>
-			<p ng-show="o.item.customs.comment != ''">
+			<p ng-show="o.item.customs.comment != '' && o.item.customs.comment != undefined">
 			comment: <text> {{o.item.customs.comment}} </text>
 			</p>
 		  </section>
 		  <section flex layout="row" layout-align="end center">
-			<md-button class="md-raised"  ng-click="incrementItem(o)"> + </md-button>
 			<md-button class="md-raised"  ng-click="removeItem(o.item, order)"> - </md-button>
+			<md-button class="md-raised"  ng-click="incrementItem(o)"> + </md-button>
 		  </section>
 		  <!--<i class="material-icons">close</i>--> 
 		</md-list-item>
