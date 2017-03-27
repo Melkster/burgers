@@ -201,7 +201,7 @@ app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
 	],
 	zone: 1,
   }
-  //$scope.orders.push(testOrder1, testOrder2);
+  $scope.orders.push(testOrder1, testOrder2);
 
   $scope.removeMeal = function(meal) {
 	//console.log(meal.progress);
