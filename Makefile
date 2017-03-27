@@ -6,7 +6,8 @@ install:
 
 server:
 	sass --watch styling:styling/css &
-	npm run dev
+	@#npm run dev
+	node server
 
 tree:
 	clear
