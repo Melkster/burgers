@@ -206,7 +206,6 @@ app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
   $scope.orders.push(testOrder1, testOrder2);
 
   $scope.removeMeal = function(meal) {
-	//console.log(meal.progress);
 	if (!meal.progress) {
 	  meal.progress = true;
 	} else {
@@ -249,7 +248,6 @@ app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
   })
 
   $scope.commentedOrRemoved = function(c) {
-	console.log(c);
 	return (c == "" || c == undefined || c == [] || c == null);
   }
 });
@@ -285,7 +283,6 @@ app.service('orderService', function() {
 		  'progress': false});
 	  }
 	}
-	//console.log(new_orders);
 	return new_orders;
   }
 
