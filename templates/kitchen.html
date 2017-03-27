@@ -14,10 +14,13 @@
 			  <span ng-show="meal.progress"><i> (in progress)</i></span>
 			  </div>
 
-			  <div class="md-headline" ng-show="meal.item.customs.removed.length > 0" flex>without:
+			  <div ng-show="commentedOrRemoved(meal.item.customs.removed)" flex></div>
+			  <div class="md-headline" ng-show="!commentedOrRemoved(meal.item.customs.removed)" flex>without:
 				<span class="md-headline" ng-repeat="removed in meal.item.customs.removed">{{removed}}<span ng-show="!$last">,</span> </span>
 			  </div>
-			  <div class="md-headline" ng-show="meal.item.customs.comment.length > 0" flex>comment: {{meal.item.customs.comment}}
+
+			  <div ng-show="commentedOrRemoved(meal.item.customs.comment)" flex></div>
+			  <div class="md-headline" ng-show="!commentedOrRemoved(meal.item.customs.comment)" flex>comment: {{meal.item.customs.comment}}
 			  </div>
 			  <div class="md-secondary">{{meal.time}}</div>
 			</md-list-item>

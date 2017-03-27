@@ -165,7 +165,7 @@ app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
 		  name: "Anouther burger",
 		  customs: {
 			removed: ["onion"],
-			comment: "another comment"
+			comment: ""
 		  },
 		},
 		progress: false,
@@ -181,6 +181,8 @@ app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
 		item: {
 		  name: "Burger",
 		  customs: {
+			removed: [],
+			comment: ""
 		  },
 		},
 		progress: false,
@@ -245,6 +247,11 @@ app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
 	orderService.addOrder(o);
 	$scope.$apply();
   })
+
+  $scope.commentedOrRemoved = function(c) {
+	console.log(c);
+	return (c == "" || c == undefined || c == [] || c == null);
+  }
 });
 
 app.service('orderService', function() {
