@@ -54,7 +54,7 @@
 		  </md-card-footer>
 		</md-card>
 	  </md-content>
-          
+
 	  <h3>Choose zone:</h3>
 	  <md-content layout="row" layout-wrap>
 		<md-card flex ng-repeat="zone in [1,2,3,4,5,6,7,8,9]" ng-click="setZone(zone)">
@@ -80,7 +80,7 @@
 			<p ng-show="o.item.customs.removed.length != 0">
 			without: 
 			<text ng-repeat="r in o.item.customs.removed">
-			  {{r}}<span ng-show="!$last">, </span> 
+			{{r}}<span ng-show="!$last">, </span> 
 			</text>
 			</p>
 			<p ng-show="o.item.customs.comment != '' && o.item.customs.comment != undefined">

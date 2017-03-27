@@ -33,7 +33,6 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   };
 
   $scope.addItem = function(item) {
-	//console.log(item);
 	if (item.customs == undefined || item.customs == "") item.customs = $scope.noCustoms;
 	else if (item.customs.comment == undefined) item.customs.comment = "";
 	var itemInOrder = $scope.itemExists($scope.order, item);
@@ -52,18 +51,11 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   };
 
   $scope.getTime = function(date) {
-	//console.log(meal);
-	//var time = dojo.date.stamp.fromIOString(meal.time);
-	//console.log(time);
-	var temp = ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2);
-	console.log(temp);
-	return temp;
+	return temp = ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2);
   }
 
   $scope.removeItem = function(item, items) {
 	for (i in items) if (angular.equals(items[i].item, item)) {
-	  //console.log(items[i].item);
-	  //console.log(item);
 	  if (items[i].amount > 1) items[i].amount--;
 	  else {
 		items.splice(i, 1);
@@ -94,7 +86,6 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
   }
 
   $scope.submitOrder = function() {
-	  console.log($scope.order);
 	if ($scope.order.length != 0 && Number.isInteger($scope.zoneChosen)){
 	  socket.emit("order", {
 		'orders': $scope.order,
@@ -113,27 +104,6 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 	$scope.zoneChosen = '-';
 	$scope.zoneChosenBool = false;
   }
-
-  $scope.showAdvanced = function(ev, burger) {
-	console.log("hej");
-	$mdDialog.show({
-	  templateUrl: 'templates/dialog.html',
-	  controller: 'bar-controller',
-	  parent: angular.element(document.body),
-	  targetEvent: ev,
-	  clickOutsideToClose:true,
-	  fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-
-	})
-	  .then(function(answer) {
-		console.log("hejsan")
-		$scope.status = 'You said the information was "' + answer + '".';
-		console.log($scope.status);
-	  }, function() {
-		$scope.status = 'You cancelled the dialog.';
-		console.log($scope.status);
-	  });
-  };
 
   $scope.addCustom = function(item, customs) {
 	item.customs = customs;
@@ -174,67 +144,63 @@ app.controller('bar-controller', function($scope, $mdDialog, orderService) {
 
 app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
   $scope.orders = orderService.getOrder();
-  //console.log($scope.orders);
-  $scope.orders.push(
-	{
-	  orders: [
-		{
-		  amount: 1,
-		  item: {
-			name: "Burger name",
-			customs: {
-			  removed: ["cheese", "bacon"],
-			  comment: "comment"
-			},
+  var testOrder1 = {
+	orders: [
+	  {
+		amount: 1,
+		item: {
+		  name: "Burger name",
+		  customs: {
+			removed: ["cheese", "bacon"],
+			comment: "comment"
 		  },
-		  progress: false,
-		  time: "20:15"
 		},
-		{
-		  amount: 1,
-		  item: {
-			name: "Anouther burger",
-			customs: {
-			  removed: ["onion"],
-			  comment: "another comment"
-			},
+		progress: false,
+		time: "20:15"
+	  },
+	  {
+		amount: 1,
+		item: {
+		  name: "Anouther burger",
+		  customs: {
+			removed: ["onion"],
+			comment: "another comment"
 		  },
-		  progress: false,
-		  time: "20:20"
-		}
-	  ],
-	  zone: 1,
-	},
-	{
-	  orders: [
-		{
-		  amount: 1,
-		  item: {
-			name: "Burger",
-			customs: {
-			},
-		  },
-		  progress: false,
-		  time: "20:15"
 		},
-		{
-		  amount: 1,
-		  item: {
-			name: "Anouther burger",
-			customs: {
-			  removed: [],
-			  comment: "Comment comment"
-			},
+		progress: false,
+		time: "20:20"
+	  }
+	],
+	zone: 1,
+  }
+  var testOrder2 = {
+	orders: [
+	  {
+		amount: 1,
+		item: {
+		  name: "Burger",
+		  customs: {
 		  },
-		  progress: false,
-		  time: "20:31"
-		}
-	  ],
-	  zone: 1,
-	}
-  )
-
-  //console.log($scope.orders);
+		},
+		progress: false,
+		time: "20:15"
+	  },
+	  {
+		amount: 1,
+		item: {
+		  name: "Anouther burger",
+		  customs: {
+			removed: [],
+			comment: "Comment comment"
+		  },
+		},
+		progress: false,
+		time: "20:31"
+	  }
+	],
+	zone: 1,
+  }
+  //$scope.orders.push(testOrder1, testOrder2);
 
   $scope.removeMeal = function(meal) {
 	//console.log(meal.progress);
@@ -275,7 +241,6 @@ app.controller('kitchen-controller', function($scope, $mdDialog, orderService) {
   }
 
   socket.on("newOrder", function(o) {
-	console.log("newOrder:", o);
 	orderService.addOrder(o);
 	$scope.$apply();
   })
@@ -285,7 +250,6 @@ app.service('orderService', function() {
   this.orderData = {orders:[]};
 
   this.addOrder = function(order) {
-	//console.log(order);
 	order.orders = flatten(order.orders);
 
 	for (var i = 0; i < this.orderData.orders.length; i++) {
@@ -307,7 +271,6 @@ app.service('orderService', function() {
 	var new_orders = [];
 	for (var i = 0; i < orders.length; i++) {
 	  for (var j = 0; j < orders[i].amount; j++) {
-		//console.log(orders[i]);
 		new_orders.push({'item': orders[i].item,
 		  'amount': 1,
 		  'time': orders[i].time,
